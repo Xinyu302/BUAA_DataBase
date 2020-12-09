@@ -1,4 +1,4 @@
-package com.sexyyxy.marketdemo.dao;
+package com.yxy.market1.dao;
 
 public class UserLoginDao {
 }

@@ -22,24 +22,32 @@ public class LoginController extends BaseController {
     @Autowired
     private IUserService mUserService;
 
+    @GetMapping("/")
+    public String indexPage(){
+        return "index";
+    }
     /**
      * 前台用户登录
      * 表单提交
      */
     @PostMapping("/userlogin.f")
     public String fFrontUserLogin(HttpServletRequest request, Model model,UserLoginForm loginForm, BindingResult bindingResult) throws Exception {
+        System.out.println("this func is called");
+        System.out.println("username is " + loginForm.getUsername());
+        System.out.println("username is " + loginForm.getPassword());
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             addModelAtt(model, VIEW_MSG, errors.get(0).getDefaultMessage());
-            return "userlogin";
+            return "login";
         }
         User user = mUserService.loginAuthentication(loginForm);
         if (null != user) {
+//            System.out.println("login now");
             mUserService.joinSession(request, user);
             return "redirect:/";
         }
         addModelAtt(model, VIEW_MSG, "用户名或密码错误");
-        return "userlogin";
+        return "login";
     }
 
     /**
@@ -48,21 +56,28 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/userregister.f")
     public String fFrontUserRegister(UserRegisterForm registerForm, BindingResult bindingResult, HttpServletRequest request, Model model, User user) {
+        System.out.println("username is " + registerForm.getUsername());
+        System.out.println("username is " + registerForm.getPassword());
         if (bindingResult.hasErrors()) {
+            System.out.println(1);
             List<ObjectError> errors = bindingResult.getAllErrors();
-            return "redirect:/userregister";
+            return "register";
         }
         //再次进行重名校验
         if (mUserService.registerUsernameCheckExist(registerForm)) {
-            return "redirect:/userregister";
+            System.out.println(2);
+            return "register";
         }
         //再次进行密码一致校验
         if (!(registerForm.getPassword().equals(registerForm.getConfirmpassword()))) {
-            return "redirect:/userregister";
+            System.out.println(3);
+            return "register";
         }
+        user.setUsername(registerForm.getUsername());
+        user.setPassword(registerForm.getPassword());
         mUserService.insertUser(user);
         //跳转登录
-        return "redirect:/userlogin";
+        return "index";
     }
 
     @GetMapping("/usersignout.c")
