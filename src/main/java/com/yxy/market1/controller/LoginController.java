@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+import static com.yxy.market1.consts.ViewConsts.VIEW_LABEL;
 import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
 @Controller
 public class LoginController extends BaseController {
@@ -24,7 +25,7 @@ public class LoginController extends BaseController {
 
     @GetMapping("/")
     public String indexPage(){
-        return "index-2";
+        return "index";
     }
     /**
      * 前台用户登录
@@ -38,7 +39,7 @@ public class LoginController extends BaseController {
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             addModelAtt(model, VIEW_MSG, errors.get(0).getDefaultMessage());
-            return "login";
+            return "login-register";
         }
         User user = mUserService.loginAuthentication(loginForm);
         if (null != user) {
@@ -46,8 +47,9 @@ public class LoginController extends BaseController {
             mUserService.joinSession(request, user);
             return "redirect:/";
         }
+        addModelAtt(model, VIEW_LABEL, 1);
         addModelAtt(model, VIEW_MSG, "用户名或密码错误");
-        return "login";
+        return "login-register";
     }
 
     /**
@@ -55,29 +57,32 @@ public class LoginController extends BaseController {
      * 表单提交
      */
     @PostMapping("/userregister.f")
-    public String fFrontUserRegister(UserRegisterForm registerForm, BindingResult bindingResult, HttpServletRequest request, Model model, User user) {
+    public String fFrontUserRegister(UserRegisterForm registerForm, BindingResult bindingResult, HttpServletRequest request, Model model, User user) throws Exception {
         System.out.println("username is " + registerForm.getUsername());
         System.out.println("username is " + registerForm.getPassword());
         if (bindingResult.hasErrors()) {
             System.out.println(1);
             List<ObjectError> errors = bindingResult.getAllErrors();
-            return "register";
+            return "login-register";
         }
-        //再次进行重名校验
         if (mUserService.registerUsernameCheckExist(registerForm)) {
-            System.out.println(2);
-            return "register";
+            addModelAtt(model, VIEW_MSG,"该用户已注册");
+            addModelAtt(model, VIEW_LABEL, 2);
+            return "login-register";
         }
         //再次进行密码一致校验
         if (!(registerForm.getPassword().equals(registerForm.getConfirmpassword()))) {
             System.out.println(3);
-            return "register";
+            addModelAtt(model, VIEW_MSG,"两次密码不相同");
+            addModelAtt(model, VIEW_LABEL, 2);
+            return "login-register";
         }
         user.setUsername(registerForm.getUsername());
         user.setPassword(registerForm.getPassword());
         mUserService.insertUser(user);
         //跳转登录
-        return "index";
+        addModelAtt(model, VIEW_LABEL, 1);
+        return "login-register";
     }
 
     @GetMapping("/usersignout.c")

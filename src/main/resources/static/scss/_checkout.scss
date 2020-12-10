@@ -1,13 +1,21 @@
+
 /*-------- 22. Checkout style ---------*/
 
 .customer-zone {
     > p {
-        font-size: 14px;
+        font-size: 15px;
         position: relative;
         padding: 14px 30px 14px 60px;
         background-color: #eeeff2;
         margin: 0;
         position: relative;
+        color: $black;
+        a {
+            color: $black;
+            &:hover {
+                color: $theme-color-red;
+            }
+        }
         @media #{$xs-layout} {
             padding: 14px 30px 14px 40px;
         }
@@ -19,7 +27,7 @@
             font-family: 'simple-line-icons';
             left: 15px;
             top: 15px;
-            font-size: 15px;
+            font-size: 18px;
         }
     }
 }
@@ -37,8 +45,8 @@
         .sin-checkout-login {
             margin-bottom: 30px;
             label {
-                font-size: 13px;
-                text-transform: uppercase;
+                font-size: 14px;
+                text-transform: capitalize;
                 margin: 0 0 5px;
                 span {
                     color: red;
@@ -66,9 +74,9 @@
                 font-weight: 600;
                 text-transform: uppercase;
                 &:hover {
-                    background-color: $theme-color;
+                    background-color: $theme-color-red;
                     color: #fff;
-                    border: 1px solid $theme-color;
+                    border: 1px solid $theme-color-red;
                 }
             }
             .checkout-login-toggle-btn {
@@ -99,9 +107,6 @@
             font-size: 14px;
             margin: 0 0 13px;
             display: block;
-            @media #{$xs-layout} {
-                font-size: 13px;
-            }
         }
         ul {
             li {
@@ -130,7 +135,7 @@
                     }
                     line-height: 1;
                     &:hover {
-                        background-color: $theme-color;
+                        background-color: $theme-color-red;
                         color: #fff;
                     }
                 }
@@ -149,13 +154,12 @@
                color: #8a8a8a;
                 font-size: 12px;
                 &:hover {
-                    color: $theme-color;
+                    color: $theme-color-red;
                 }
             }
         }
     }
 }
-
 
 .checkout-login-info3 {
     display: none;
@@ -190,7 +194,7 @@
                 padding: 5px 16px;
             }
             &:hover {
-                background-color: $theme-color;
+                background-color: $theme-color-red;
             }
         }
     }
@@ -202,6 +206,7 @@
         font-weight: 600;
         position: relative;
         margin: 0 0 55px;
+        text-transform: uppercase;
         @media #{$xs-layout} {
             margin-bottom: 40px;
         }
@@ -210,7 +215,7 @@
             content: "";
             left: 0;
             bottom: -12px;
-            background-color: #000;
+            background-color: $theme-color-red;
             width: 50px;
             height: 2px;
         }
@@ -218,7 +223,7 @@
     .billing-info {
         label {
             font-size: 14px;
-            text-transform: uppercase;
+            text-transform: capitalize;
             display: block;
             margin: 0 0 5px;
             abbr {
@@ -231,7 +236,7 @@
             background-color: transparent;
             padding: 2px 20px;
             color: #1f2226;
-            font-size: 13px;
+            font-size: 14px;
             &:focus {
                 border: 1px solid #343538;
             }
@@ -242,8 +247,8 @@
     }
     .billing-select {
         label {
-            font-size: 13px;
-            text-transform: uppercase;
+            font-size: 14px;
+            text-transform: capitalize;
             display: block;
             margin: 0 0 5px;
             abbr {
@@ -254,17 +259,17 @@
             border: 1px solid #e6e6e6;
             -moz-appearance: none;
             -webkit-appearance: none;
-            color: #1f2226;
-            font-size: 13px;
+            color: #333;
+            font-size: 14px;
             height: 50px;
             padding: 2px 20px;
-            background: rgba(0, 0, 0, 0) url("../../assets/img/icon-img/select.png") no-repeat scroll right 18px center;
+            background: rgba(0, 0, 0, 0) url("../../assets/images/icon-img/select.png") no-repeat scroll right 18px center;
             cursor: pointer;
             option {
                 background: #fff;
                 border: 0px solid #626262;
-                padding-left: 10px;
-                color: #1f2226;
+                padding-left: 10px; 
+                color: #333;
                 font-size: 12px;
             }
         }
@@ -278,10 +283,10 @@
             width: 10px;
             position: relative;
             top: 6px;
-            color: #1f2226;
+            color: #333;
         }
         span {
-            color: #1f2226;
+            color: #333;
             font-weight: 400;
             margin: 0 0 0 12px;
             font-size: 14px;
@@ -291,7 +296,7 @@
     .checkout-account-toggle {
         label {
             font-size: 14px;
-            text-transform: uppercase;
+            text-transform: capitalize;
             display: block;
             margin: 0 0 5px;
             abbr {
@@ -302,8 +307,8 @@
             border: 1px solid #e8e8e8;
             height: 50px;
             background-color: transparent;
-            color: #1f2226;
-            font-size: 13px;
+            color: #333;
+            font-size: 14px;
             padding: 2px 20px;
             &:focus {
                 border: 1px solid #343538;
@@ -316,9 +321,9 @@
     .additional-info-wrap {
         margin: 22px 0 0;
         label {
-            color: #1f2226;
+            color: #010225;
             font-size: 14px;
-            text-transform: uppercase;
+            text-transform: capitalize;
             display: block;
             margin: 0 0 5px;
         }
@@ -327,8 +332,8 @@
             background-color: #f7f7f7;
             border-color: #f7f7f7;
             padding: 20px;
-            color: #1f2226;
-            font-size: 13px;
+            color: #333;
+            font-size: 14px;
         }
     }
     @media #{$lg-layout} {
@@ -369,13 +374,13 @@
         font-weight: 600;
         position: relative;
         margin: 0 0 45px;
-        text-transform: capitalize;
+        text-transform: uppercase;
         &:before {
             position: absolute;
             content: "";
             left: 0;
             bottom: -12px;
-            background-color: #000;
+            background-color: $theme-color-red;
             width: 50px;
             height: 2px;
         }
@@ -391,6 +396,7 @@
                     font-weight: 500;
                     span {
                         float: right;
+                        color: $theme-color-red;
                     }
                 }
             }
@@ -412,9 +418,9 @@
                     li {
                         > p {
                             float: right;
-                            font-size: 12px;
+                            font-size: 14px;
                             text-align: right;
-                            color: #1f2226;
+                            color: #333;
                             text-transform: capitalize;
                         }
                     }
@@ -438,20 +444,18 @@
                 li {
                     font-size: 14px;
                     margin: 0 0 11px;
-                    font-family: $roboto;
                     &:last-child {
                         margin-bottom: 0;
                     }
                     span {
                         float: right;
                         font-size: 16px;
-                        font-family: $poppins;
                     }
                 }
             }
         }
         .payment-method {
-            margin: 17px 0 0;
+            margin: 40px 0 0;
             .sin-payment {
                 margin-bottom: 20px;
                 input {
@@ -467,6 +471,7 @@
                     margin: 0px 0 0 21px;
                     display: flex;
                     align-items: center;
+                    font-weight: 500;
                     @media #{$xs-layout} {
                         display: block;
                     }
@@ -483,34 +488,32 @@
                     margin: 6px 0 0;
                     display: none;
                     p {
-                        font-size: 12px;
+                        font-size: 14px;
                         margin: 0;
-                    }
-                }
-                &.sin-payment-3 {
-                    input {
-                        margin-top: 18px;
                     }
                 }
             }
         }
     }
     .Place-order {
+        margin-top: 40px;
+        @media #{$xs-layout} {
+            margin-top: 20px;
+        }
         a {
-            background-color: $theme-color;
-            font-size: 12px;
+            background-color: $theme-color-red;
             display: block;
             cursor: pointer;
-            padding: 17px 50px 18px;
+            padding: 16px 50px 17px;
             text-transform: uppercase;
             font-weight: 700;
             width: 100%;
             color: #fff;
-            font-size: 13px;
-            font-weight: 600l;
+            font-size: 14px;
+            font-weight: 600;
             text-align: center;
             &:hover {
-                background-color: #212529;
+                background-color: #333;
             }
         }
     }
@@ -523,63 +526,5 @@
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

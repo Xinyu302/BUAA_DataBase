@@ -1,4 +1,4 @@
-/*-------- 18. Blog details style ---------*/
+/*------ 26. Blog details style  -------*/
 
 
 .blog-details-top {
@@ -24,7 +24,7 @@
                 line-height: 61px;
                 width: 60px;
                 &:hover {
-                    background-color: $theme-color;
+                    background-color: $theme-color-red;
                 }
             }
         }
@@ -32,13 +32,46 @@
     .blog-details-content {
         margin-top: 30px;
         @media #{$xs-layout} {
-            margin-top: 20px;
+            margin-top: 15px;
         }
-        h3 {
+        .blog-meta-2 {
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    margin-right: 30px;
+                    position: relative;
+                    &:before {
+                        position: absolute;
+                        content: "";
+                        right: -16px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 1px;
+                        height: 12px; 
+                        background-color: #000;
+                    }
+                    &:last-child {
+                        margin-right: 0;
+                        &:before {
+                            display: none;
+                        }
+                    }
+                    a {
+                        color: $black;
+                        font-weight: 600;
+                        &:hover {
+                            color: $theme-color-red;
+                        }
+                    }
+                }
+            }
+        }
+        h1 {
             font-size: 24px;
-            font-weight: 500;
-            margin: 0px;
-            color: #383838;
+            font-weight: 600;
+            margin: 8px 0 20px;
+            color: #222;
             @media #{$lg-layout} {
                 font-size: 22px;
             }
@@ -47,80 +80,49 @@
             }
             @media #{$xs-layout} {
                 font-size: 18px;
-                line-height: 30px;
-            }
-        }
-        .blog-details-meta {
-            margin: 12px 0 15px;
-            ul {
-                li {
-                    display: inline-block;
-                    color: #919090;
-                    font-size: 14px;
-                    margin-right: 28px;
-                    position: relative;
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                    &::before {
-                        position: absolute;
-                        right: -22px;
-                        top: 12px;
-                        width: 15px;
-                        height: 1px;
-                        background-color: #999898;
-                        content: "";
-                        transform: rotate(70deg);
-                    }
-                    &:last-child::before {
-                        display: none;
-                    }
-                }
+                line-height: 28px;
+                margin: 8px 0 12px;
             }
         }
         p {
             margin: 0;
-            line-height: 26px;
+            font-size: 15px;
+            line-height: 28px;
+            @media #{$xs-layout} {
+                font-size: 14px;
+                line-height: 26px;
+            }
         }
         blockquote {
+            color: #222;
             font-size: 18px;
-            margin: 25px 0 26px 50px;
+            margin: 25px 0 26px;
             line-height: 34px;
-            font-weight: 600;
+            font-weight: 500;
             font-style: italic;
-            color: #383838;
-            position: relative;
-            @media #{$xs-layout} {
-                margin: 25px 0 26px 20px;
-            }
-            &:before {
-                position: absolute;
-                left: -20px;
-                top: 8px;
-                height: 56px;
-                width: 5px;
-                background-color: $theme-color;
-                content: "";
-            }
             @media #{$lg-layout} {
                 font-size: 17px;
             }
             @media #{$md-layout} {
-                font-size: 16px;
+                font-size: 17px;
             }
             @media #{$xs-layout} {
                 font-size: 16px;
-                line-height: 30px;
+                line-height: 28px;
+                margin: 15px 0 15px;
             }
         }
     }
 }
 
-
 .dec-img-wrapper {
     margin-top: 50px;
     @media #{$xs-layout} {
-        margin-top: 30px;
+        margin-top: 25px;
+    }
+    p {
+        font-size: 15px;
+        line-height: 28px;
     }
     .dec-img {
         img {
@@ -128,7 +130,7 @@
         }
         &.mb-50 {
             @media #{$xs-layout} {
-                margin-bottom: 30px;
+                margin-bottom: 25px;
             }
         }
     }
@@ -155,6 +157,10 @@
                 a {
                     text-transform: capitalize;
                     font-size: 15px;
+                    color: $black;
+                    &:hover {
+                        color: $theme-color-red;
+                    }
                 }
             }
         }
@@ -172,6 +178,19 @@
                 margin-left: 10px;
                 a {
                     font-size: 16px;
+                    color: $black;
+                    &:hover {
+                        &.facebook {
+                            color: #5678bf;
+                        }
+                        &.twitter {
+                            color: #73c2fd;
+                        }
+                        &.instagram {
+                            color: #e4405f;
+                        }
+                    }
+                    
                 }
             }
         }
@@ -187,15 +206,12 @@
     a{
         font-size: 15px;
         text-transform: capitalize;
-        font-weight: 500;
-        i {
-            font-size: 12px;
-            position: relative;
-            top: 0px;
+        color: $black;
+        &:hover {
+            color: $theme-color-red;
         }
     }
 }
-
 
 .blog-comment-wrapper {
     @media #{$xs-layout} {
@@ -239,26 +255,32 @@
         }
         .blog-comment-content {
             h4 {
-                font-size: 14px;
-                font-weight: 600;
+                font-size: 16px;
+                font-weight: 500;
                 margin: 0;
                 line-height: 1;
-                text-transform: uppercase;
             }
             span {
                 display: block;
-                font-size: 14px;
-                margin: 2px 0 8px;
+                font-size: 15px;
+                margin: 6px 0 8px;
             }
             p {
-                font-size: 14px;
+                font-size: 15px;
                 margin-bottom: 10px;
+                @media #{$xs-layout} {
+                    font-size: 14px;
+                }
             }
             .blog-details-btn {
                 a {
                     font-size: 14px;
-                    font-weight: 600;
-                    text-transform: uppercase;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    color: $black;
+                    &:hover {
+                        color: $theme-color-red;
+                    }
                 }
             }
         }
@@ -295,10 +317,10 @@
                 background: transparent none repeat scroll 0 0;
                 border: 1px solid #eaeaea;
                 box-shadow: none;
+                color: $black;
                 height: 50px;
                 margin-bottom: 30px;
-                padding: 2px 20px 2px 20px;
-                color: #1f2226;
+                padding-left: 20px;
             }
         }
         .text-leave {
@@ -306,63 +328,32 @@
                 background: transparent none repeat scroll 0 0;
                 border: 1px solid #eaeaea;
                 box-shadow: none;
-                height: 250px;
+                color: $black;
+                height: 200px;
+                padding-top: 20px;
                 margin-bottom: 20px;
-                padding: 20px 20px 2px 20px;
+                padding-left: 20px;
                 @media #{$xs-layout} {
-                    height: 180px;
+                    height: 120px;
                 }
             }
             input {
-                background-color: $theme-color;
+                background-color: $theme-color-red;
                 border: medium none;
-                color: #fff;
+                color: $white;
                 cursor: pointer;
                 display: inline-block;
                 font-weight: 600;
                 height: inherit;
                 margin-top: 10px;
-                padding: 14px 30px 13px;
+                padding: 13px 30px 13px;
                 width: inherit;
-                font-size: 13px;
                 &:hover {
-                    background-color: #1f2226;
+                    background-color: $black;
                 }
             }
         }
     }
 }
-
-
-.blog-details-wrapper {
-    @media #{$md-layout} {
-        &.ml-20 {
-            margin-left: 0;
-        }
-    }
-    @media #{$xs-layout} {
-        &.ml-20 {
-            margin-left: 0;
-        }
-    }
-    @media #{$md-layout} {
-        &.mr-20 {
-            margin-right: 0;
-        }
-    }
-    @media #{$xs-layout} {
-        &.mr-20 {
-            margin-right: 0;
-        }
-    }
-}
-
-
-
-
-
-
-
-
 
 

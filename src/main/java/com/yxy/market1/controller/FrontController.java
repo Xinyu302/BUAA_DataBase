@@ -47,7 +47,7 @@ public class FrontController {
      */
     @GetMapping("/userlogin")
     public String pFrontUserLogin(HttpServletRequest request, Model model) {
-        return "login";
+        return "login-register";
     }
 
     /**
@@ -55,7 +55,7 @@ public class FrontController {
      */
     @GetMapping("/userregister")
     public String pFrontUserRegister(HttpServletRequest request, Model model) {
-        return "register";
+        return "login-register";
     }
 
 }

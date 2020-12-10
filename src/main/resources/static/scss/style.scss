@@ -1,69 +1,69 @@
 /*-----------------------------------------------------------------------------------
-
-    Template Name: Flone - Minimalist eCommerce Bootstrap 4 Template
-    Version: 1
-
+    
+    Template Name: Norda - Minimal eCommerce HTML Template
+    Version: 1.0
+    
 -----------------------------------------------------------------------------------
     
     CSS INDEX
     ===================
-	
     1. Template default CSS
-    2. Header style
-    3. Slider style
-    4. Banner style
-    5. Secting title style
-    6. Product style
-    7. Testimonial style
-    8. Feature style
-    9. Blog style
-    10. Footer style
-    11. Instagram style
-    12. Breadcrumb style
-    13. Shop style
-    14. Sidebar style
-    15. Product details style
-    16. Cart style
-    17. Login register style
-    18. Blog details style
-    19. About us style
-    20. Contact us style
+    2. Animation CSS
+    3. Header style
+    4. Slider style
+    5. Service style
+    6. About us style
+    7. Section title style
+    8. Product style
+    9. Banner style
+    10. Brand logo style
+    11. Subscribe style
+    12. Footer style
+    13. Instagram style
+    14. Blog style
+    15. Others style
+    16. Product details style
+    17. Breadcrumb style
+    18. Sidebar style
+    19. Shop style
+    20. Cart style
     21. Compare style
     22. Checkout style
     23. My account style
+    24. Login register style
+    25. Contect us style
+    26. Blog details style
+    27. Order tracking style
     
 -----------------------------------------------------------------------------------*/
 @import 'variabls';
 @import 'common';
+@import 'animation';
 @import 'header';
 @import 'slider';
-@import 'banner';
+@import 'service';
+@import 'about-us';
 @import 'section-title';
 @import 'product';
-@import 'testimonial';
-@import 'feature';
-@import 'blog';
+@import 'banner';
+@import 'brand-logo';
+@import 'subscribe';
 @import 'footer';
 @import 'instagram';
-@import 'breadcrumb'; 
-@import 'shop';
-@import 'sidebar';
+@import 'blog';
+@import 'others';
 @import 'product-details';
+@import 'breadcrumb';
+@import 'sidebar';
+@import 'shop';
 @import 'cart';
-@import 'login-register';
-@import 'blog-details';
-@import 'about-us';
-@import 'contact-us';
 @import 'compare';
 @import 'checkout';
 @import 'my-account';
-
-
-
-
-
-
-
+@import 'login-register';
+@import 'contect-us';
+@import 'blog-details';
+@import 'order-tracking';
 
 
 

@@ -1,132 +1,154 @@
-/*-------- 19. About us style ---------*/
+/*-------- 6. About us style ---------*/
 
-
-.story-img {
-    position: relative;
-    img {
-        width: 100%;
-    }
-    .about-logo {
+.about-us-content {
+    h3 {
+        font-size: 24px;
+        font-weight: bold;
+        font-family: $heebo;
         margin: 0;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        h3 {
-            background-color: $theme-color;
-            border-radius: 100%;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            margin: 0;
-            position: relative;
-            right: 0;
-            text-align: center;
-            text-transform: uppercase;
-            display: inline-block;
-            width: 185px;
-            height: 185px;
-            line-height: 185px;
-            @media #{$xs-layout} {
-                width: 150px;
-                height: 150px; 
-                line-height: 150px;
-                font-size: 30px;
-            }
-            &::before {
-                border: 1px solid #fff;
-                border-radius: 100%;
-                content: "";
-                height: 152px;
-                left: 17px;
-                line-height: 144px;
-                position: absolute;
-                top: 17px;
-                width: 152px;
-                @media #{$xs-layout} {
-                    width: 130px;
-                    line-height: 130px;
-                    height: 130px;
-                    top: 10px;
-                    left: 10px;
-                }
-            }
+        text-transform: uppercase;
+    }
+    p {
+        font-size: 20px;
+        font-family: $jost;
+        line-height: 36px;
+        margin: 23px 0 51px;
+        width: 93%;
+        @media #{$md-layout} {
+            font-size: 18px;
+            line-height: 34px;
+            margin: 15px 0 40px;
+            width: 100%;
         }
+        @media #{$xs-layout} {
+            font-size: 18px;
+            line-height: 34px;
+            margin: 10px 0 30px;
+            width: 100%;
+        }
+    }
+    .signature {
+        h2 {
+            font-size: 24px;
+            font-family: $signericafat;
+        }
+    }
+    @media #{$xs-layout} {
+        margin-top: 20px;
     }
 }
 
-.story-details {
-    .story-details-top {
-        margin-bottom: 48px;
-        @media #{$xs-layout} {
-            margin-bottom: 30px;
+.about-content-pb {
+    padding-bottom: 120px;
+    @media #{$md-layout} {
+        padding-bottom: 80px;
+    }
+    @media #{$xs-layout} {
+        padding-bottom: 60px; 
+    }
+}
+
+.about-us-content-2 {
+    .about-us-content-2-title {
+        margin: 0 0 35px;
+        @media #{$md-layout} {
+            margin: 0 0 15px;
         }
-        > h2 {
-            font-size: 36px;
-            font-weight: bold;
-            margin: 0 0 20px;
-            text-transform: uppercase;
-            @media #{$xs-layout} {
-                font-size: 27px;
-                line-height: 25px;
-                margin: 0 0 12px;
-            }
-            span {
-                color: $theme-color;
-            }
+        @media #{$xs-layout} {
+            margin: 0 0 15px;
+        }
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -.25px;
+            margin: 0;
         }
     }
-    .story-details-bottom {
-        margin-bottom: 48px;
+    p {
+        line-height: 30px;
+        margin: 0 0 35px;
+        @media #{$md-layout} {
+            margin: 0 0 15px;
+        }
         @media #{$xs-layout} {
-            margin-bottom: 30px;
+            margin: 0 0 15px;
         }
         &:last-child {
             margin-bottom: 0;
         }
-        h4 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            @media #{$xs-layout} {
-                margin-bottom: 10px;
-            }
-        }
-        p {
-            letter-spacing: 0.4px;
-            line-height: 26px;
-            margin: 0;
-        }
-    }
-    @media #{$md-layout} {
-        &.pl-50 {
-            padding-left: 0;
-        }
-        margin-top: 30px;
-    }
-    @media #{$xs-layout} {
-        &.pl-50 {
-            padding-left: 0;
-        }
-        margin-top: 30px;
     }
 }
 
+.about-us-content-3 {
+    h3 {
+        font-size: 24px;
+        text-transform: uppercase;
+        margin: 0 0 10px;
+        @media #{$xs-layout} {
+            font-size: 17px;
+            line-height: 24px;
+        }
+        @media #{$sm-layout} {
+            font-size: 20px;
+            line-height: 26px;
+        }
+        span {
+            font-weight: bold;
+            color: $theme-color-blue;
+        }
+    }
+    p {
+        font-size: 16px;
+        color: #666666;
+        margin: 0;
+        @media #{$xs-layout} {
+            font-size: 15px;
+        }
+        @media #{$sm-layout} {
+            font-size: 16px;
+            width: 78%;
+            margin: 0 auto;
+        }
+    }
+}
+
+.about-us-content-4 {
+    .about-us-content-4-title {
+        margin: 0 0 26px;
+        @media #{$xs-layout} {
+            margin: 0 0 15px;
+        }
+        h4 {
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -.25px;
+            margin: 0;
+        }
+    }
+    p {
+        line-height: 28px;
+        margin: 0 0 21px;
+        @media #{$xs-layout} {
+            margin: 0 0 15px;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
 
 .team-wrapper {
-    background-color: #f7f7f7;
     .team-img {
+        overflow: hidden;
         position: relative;
-        a {
-            img {
-                width: 100%;
-            }
+        img {
+            width: 100%;
         }
         .team-action {
             background: #fff none repeat scroll 0 0;
             left: 0;
             opacity: 0;
+            visibility: hidden;
             padding: 10px;
             position: absolute;
             right: 0;
@@ -137,34 +159,35 @@
             width: 100%;
             z-index: 5;
             a {
-                border-radius: 50px;
                 color: #fff;
-                display: inline-block;
-                font-size: 14px;
+                font-size: 12px;
+                transition: all 0.3s ease 0s;
+                margin: 0 7px;
+                width: 30px;
                 height: 30px;
                 line-height: 30px;
                 text-align: center;
-                width: 30px;
-                margin: 0 3px;
+                display: inline-block;
+                border-radius: 100%;
                 &.facebook {
-                    border: 1px solid #3b5998;
                     background-color: #3b5998;
+                    border: 1px solid #3b5998;
                     &:hover {
                         background-color: transparent;
                         color: #3b5998;
                     }
                 }
                 &.twitter {
-                    border: 1px solid #55acee;
                     background-color: #55acee;
+                    border: 1px solid #55acee;
                     &:hover {
                         background-color: transparent;
                         color: #55acee;
                     }
                 }
                 &.instagram {
-                    border: 1px solid #c32aa3;
                     background-color: #c32aa3;
+                    border: 1px solid #c32aa3;
                     &:hover {
                         background-color: transparent;
                         color: #c32aa3;
@@ -174,66 +197,101 @@
         }
     }
     .team-content {
-        padding: 20px 10px 23px;
+        padding: 20px 10px 21px;
+        box-shadow: 0 3px 5px rgba(85, 85, 85, 0.2);
         h4 {
             font-size: 18px;
             font-weight: 500;
-            margin: 0 0 4px;
+            margin: 0 0 5px;
             text-transform: capitalize;
-            @media #{$lg-layout} {
-                font-size: 16px;
-                margin: 0 0 2px;
-            }
+            color: $black;
         }
         span {
             font-size: 15px;
             font-style: italic;
+            color: $black;
         }
     }
     &:hover .team-action {
-        top: 50%;
         opacity: 1;
+        visibility: visible;
+        top: 50%;
     }
 }
 
+.single-testimonial-2 {
+    .testimonial-img {
+        text-align: center;
+        img {
+            display: inline-block;
+        }
+    }
+    p {
+        width: 70%;
+        margin: 20px auto 20px;
+        font-size: 18px;
+        line-height: 35px;
+        color: #333;
+        @media #{$lg-layout} {
+            width: 85%;
+        }
+        @media #{$md-layout} {
+            width: 79%;
+            margin: 15px auto 20px;
+            font-size: 17px;
+            line-height: 32px;
+        }
+        @media #{$xs-layout} {
+            width: 100%;
+            margin: 14px auto 15px;
+            font-size: 16px;
+            line-height: 28px;
+        }
+    }
+    .client-info {
+        h5 {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 6px;
+            line-height: 1;
+            @media #{$xs-layout} {
+                font-size: 18px;
+            }
+        }
+        span {
+            font-size: 16px;
+            color: #333;
+            display: block;
+            line-height: 1;
+        }
+    }
+}
 
+@media #{$md-layout} {
+    .about-us-area {
+        &.pt-85 {
+            padding-top: 25px;
+        }
+    }
+    .team-area {
+        &.pb-90 {
+            padding-bottom: 50px;
+        }
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media #{$xs-layout} {
+    .about-us-area {
+        &.pt-85 {
+            padding-top: 20px;
+        }
+    }
+    .team-area {
+        &.pb-90 {
+            padding-bottom: 30px;
+        }
+    }
+}
 
 
 

@@ -23,7 +23,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public User loginAuthentication(UserLoginForm loginForm) {
-//        List<User> userList =
         List<User> userList = mMapper.findUserByNameAndPassword(loginForm.getUsername(),DigestUtils.md2Hex(loginForm.getPassword()));
         if (userList != null && userList.size() == 1) {
             return userList.get(0);

@@ -7,6 +7,16 @@ public class UserRegisterForm {
 
     private String confirmpassword;
 
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public UserRegisterForm(String username, String password, String confirmpassword) {
         this.username = username;
         this.password = password;

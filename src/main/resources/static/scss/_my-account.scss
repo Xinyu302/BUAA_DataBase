@@ -2,7 +2,6 @@
 
 .myaccount-tab-menu {
     flex-direction: column;
-
     a {
         border: 1px solid #ccc;
         border-bottom: none;
@@ -11,18 +10,15 @@
         display: block;
         padding: 10px 15px;
         text-transform: uppercase;
-
         &:last-child {
             border-bottom: 1px solid #ccc;
         }
-
         &:hover,
         &.active {
-            background-color: $theme-color;
-            border-color: $theme-color;
+            background-color: $theme-color-red;
+            border-color: $theme-color-red;
             color: $white;
         }
-
         i.fa {
             font-size: 14px;
             text-align: center;
@@ -40,15 +36,12 @@
 .myaccount-content {
     border: 1px solid #eeeeee;
     padding: 30px;
-
     @media #{$xs-layout} {
         padding: 20px 15px;
     }
-
     form {
         margin-top: -20px;
     }
-
     h3 {
         font-size: 20px;
         border-bottom: 1px dashed #ccc;
@@ -56,18 +49,15 @@
         margin-bottom: 25px;
         font-weight: 600;
     }
-
     .welcome {
         a {
-
             &:hover {
-                color: $theme-color;
+                color: $theme-color-red;
             }
         }
-
         strong {
             font-weight: 600;
-            color: $theme-color;
+            color: $theme-color-red;
         }
     }
     fieldset {
@@ -75,7 +65,7 @@
         & legend {
             font-size: 16px;
             margin-bottom: 20px;
-            font-weight: 500;
+            font-weight: 600;
             padding-bottom: 10px;
             border-bottom: 1px solid #ccc;
         }
@@ -103,7 +93,7 @@
             }
             button {
                 border: none;
-                background-color: $theme-color;
+                background-color: $theme-color-red;
                 text-transform: uppercase;
                 font-weight: 600;
                 padding: 9px 25px;
@@ -141,25 +131,13 @@
 
 .saved-message {
     background-color: #fff;
-    border-top: 3px solid $theme-color;
+    border-top: 3px solid $theme-color-red;
     font-size: 14px;
     padding: 20px 0;
+    color: #333;
 }
 
 /*-------- Start My Account Page Wrapper --------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
