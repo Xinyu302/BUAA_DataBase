@@ -24,7 +24,7 @@ public class LoginController extends BaseController {
 
     @GetMapping("/")
     public String indexPage(){
-        return "index";
+        return "index-2";
     }
     /**
      * 前台用户登录
