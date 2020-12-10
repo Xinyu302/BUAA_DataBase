@@ -21,6 +21,8 @@ public interface UserMapper extends JpaRepository<User,Integer> {
 
     @Query(value = "select p from User p where p.username=:name")
     List<User> findUserByName(@Param("name") String name);
+
+
 //    @Transactional
 //    @Query()
 //    void insertSelective(User user);

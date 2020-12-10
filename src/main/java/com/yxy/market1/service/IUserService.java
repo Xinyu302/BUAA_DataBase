@@ -1,6 +1,8 @@
 package com.yxy.market1.service;
 
 import com.yxy.market1.entity.User;
+import com.yxy.market1.entity.dto.form.AccountForm;
+import com.yxy.market1.entity.dto.form.ModifyPassWordForm;
 import com.yxy.market1.entity.dto.form.UserLoginForm;
 import com.yxy.market1.entity.dto.form.UserRegisterForm;
 
@@ -29,5 +31,15 @@ public interface IUserService {
 
     void joinSession(HttpServletRequest request,User user);
 
+    User getUserSession(HttpServletRequest request);
+
     void destroySession(HttpServletRequest request);
+
+    void modifyUserPassword(HttpServletRequest request, User user, ModifyPassWordForm modifyPassWordForm);
+
+    User findUserByName(String username);
+
+    void changePassWord(String username, String password);
+
+    void modifyUserInfo(HttpServletRequest request, User user, AccountForm accountForm);
 }

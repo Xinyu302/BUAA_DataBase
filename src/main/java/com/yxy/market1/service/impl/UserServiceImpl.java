@@ -2,6 +2,8 @@ package com.yxy.market1.service.impl;
 
 import com.yxy.market1.consts.SessionConstants;
 import com.yxy.market1.entity.User;
+import com.yxy.market1.entity.dto.form.AccountForm;
+import com.yxy.market1.entity.dto.form.ModifyPassWordForm;
 import com.yxy.market1.entity.dto.form.UserLoginForm;
 import com.yxy.market1.entity.dto.form.UserRegisterForm;
 import com.yxy.market1.mapper.UserMapper;
@@ -51,8 +53,38 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public User getUserSession(HttpServletRequest request) {
+        HttpSession requestSession = request.getSession(false);
+        return (User) requestSession.getAttribute(SessionConstants.SESSION_CURRENT_USER);
+    }
+
+    @Override
     public void destroySession(HttpServletRequest request) {
         HttpSession requestSession = request.getSession(true);
         requestSession.removeAttribute(SessionConstants.SESSION_CURRENT_USER);
+    }
+
+    @Override
+    public void modifyUserPassword(HttpServletRequest request, User user, ModifyPassWordForm modifyPassWordForm) {
+
+    }
+
+    @Override
+    public User findUserByName(String username) {
+        List<User> userList = mMapper.findUserByName(username);
+        if (userList != null && userList.size() == 1) {
+            return userList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void changePassWord(String username, String password) {
+
+    }
+
+    @Override
+    public void modifyUserInfo(HttpServletRequest request, User user, AccountForm accountForm) {
+
     }
 }
