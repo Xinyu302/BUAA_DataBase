@@ -11,7 +11,7 @@ public class ProductForm {
 
     private String decription;
 
-    private Double price;
+    private Double price; 
 
 //    private String status;
 
