@@ -7,6 +7,7 @@ import com.yxy.market1.entity.dto.form.ProductForm;
 import com.yxy.market1.entity.dto.response.Result;
 import com.yxy.market1.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,26 +21,27 @@ import java.util.List;
 
 import static com.yxy.market1.consts.ViewConsts.VIEW_LABEL;
 import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
-
+@Controller
 public class ProductController extends BaseController {
     @Autowired
     private IProductService productService;
 
-    @PostMapping("/releaseproduct")
-    public String createProduct(HttpServletRequest request, Model model, ProductForm productForm) {
-        Product product = new Product();
-        product.setCategory(productForm.getCatagory());
-        Date date = new Date();
-        product.setDate(date);
-        product.setDescription(productForm.getDecription());
-        product.setName(productForm.getName());
-
-        return "product-details";
-    }
+//    @PostMapping("/releaseproduct")
+//    public String createProduct(HttpServletRequest request, Model model, ProductForm productForm) {
+//        Product product = new Product();
+//        product.setCategory(productForm.getCatagory());
+//        Date date = new Date();
+//        product.setDate(date);
+//        product.setDescription(productForm.getDecription());
+//        product.setName(productForm.getName());
+//
+//        return "product-details";
+//    }
 
     @PostMapping("/releaseproduct")
     @ResponseBody
     public Result<String> upLoadProduct(HttpServletRequest request,ProductForm productForm) {
+        System.out.println("in here");
         MultipartFile photo = productForm.getPhoto();
         if (photo == null) {
             return ResultUtil.fail("选择要上传的文件！");
@@ -52,7 +54,7 @@ public class ProductController extends BaseController {
         if (!"jpg,jpeg,gif,png".toUpperCase().contains(suffix.toUpperCase())) {
             return ResultUtil.fail("请选择jpg,jpeg,gif,png格式的图片！");
         }
-        String savePath = request.getSession().getServletContext().getRealPath("/") + "/static/images/upload/";;
+        String savePath = "/home/yxy/project_upload/";
         File savePathFile = new File(savePath);
         if (!savePathFile.exists()) {
             //若不存在该目录，则创建目录
@@ -67,15 +69,17 @@ public class ProductController extends BaseController {
             return ResultUtil.fail("保存文件异常");
         }
         Product product = new Product();
-        product.setCategory(productForm.getCatagory());
+        product.setCategory(productForm.getCategory());
+        product.setPrice(productForm.getPrice());
         Date date = new Date();
         product.setDate(date);
-        product.setDescription(productForm.getDecription());
+        product.setDescription(productForm.getDescription());
         product.setName(productForm.getName());
         product.setPictureAddr(savePath + filename);
 
         productService.createProduct(product);
-        return ResultUtil.success(savePath + filename);
+//        return ResultUtil.success(savePath + filename);
+        return ResultUtil.success("work");
     }
 //    @PostMapping("/userlogin.f")
 //    public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult) throws Exception {

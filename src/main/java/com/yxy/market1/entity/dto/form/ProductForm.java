@@ -7,11 +7,11 @@ import java.util.Date;
 public class ProductForm {
     private String name;
 
-    private String catagory;
+    private String category;
 
-    private String decription;
+    private String description;
 
-    private Double price; 
+    private Double price;
 
 //    private String status;
 
@@ -35,20 +35,20 @@ public class ProductForm {
         this.name = name;
     }
 
-    public String getCatagory() {
-        return catagory;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCatagory(String catagory) {
-        this.catagory = catagory;
+    public void setCategory(String catagory) {
+        this.category = catagory;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String decription) {
+        this.description = decription;
     }
 
     public Double getPrice() {

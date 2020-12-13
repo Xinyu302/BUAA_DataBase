@@ -4,9 +4,13 @@ import com.yxy.market1.entity.Product;
 import com.yxy.market1.mapper.ProductMapper;
 import com.yxy.market1.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Service
+@Transactional
 public class ProduceService implements IProductService {
     @Autowired
     ProductMapper pMapper;

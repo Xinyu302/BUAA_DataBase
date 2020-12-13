@@ -63,5 +63,10 @@ public class FrontController {
     public String pRelease(HttpServletRequest request) {
         return "release";
     }
+
+    @GetMapping("product-details")
+    public String details(HttpServletRequest request) {
+        return "product-details";
+    }
 }
 

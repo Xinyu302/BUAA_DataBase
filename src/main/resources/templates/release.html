@@ -161,11 +161,11 @@
 
                         </div>
                         <br><br>
-                        <form class="form-horizontal" role="form" name="fileForm">
+                        <form class="form-horizontal" role="form" id="fileForm">
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">商品名称</label>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="请输入商品名称">
+                                    <input type="text" class="form-control" placeholder="请输入商品名称" name="name">
                                 </div>
                             </div>
 
@@ -173,14 +173,14 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">商品价格</label>
                                 <div class="col-sm-1">
-                                    <input type="number" class="form-control">
+                                    <input type="number" class="form-control" name="price">
                                 </div>
                                 <label class="control-label">元</label>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">商品分区</label>
                                 <div class="col-sm-4">
-                                    <select class="form-control">
+                                    <select class="form-control" name="category">
                                         <option>学习用品</option>
                                         <option>生活用品</option>
                                         <option>体育用品</option>
@@ -194,19 +194,19 @@
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">商品简介</label>
                                 <div class="col-sm-4">
-                                    <textarea class="form-control" rows="5">请输入商品简介</textarea>
+                                    <textarea class="form-control" rows="5" name="description">请输入商品简介</textarea>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-sm-4 control-label">商品图片</label>
                                 <div class="col-sm-4">
-                                    <input type="file" name="productPic">
+                                    <input type="file" name="photo" id="photoFile">
                                 </div><br><br>
                             </div>
-
+                            <input type="hidden" th:value="${session.session_current_user.getUserId()}" name="sellerId">
                             <div class="form-group">
-                                <button type="button" class="col-sm-offset-5 col-sm-2 btn btn-info">查看商品</button>
+                                <button type="button" class="col-sm-offset-5 col-sm-2 btn btn-info" onclick="upload()">查看商品</button>
                             </div>
 
                         </form>
@@ -271,29 +271,6 @@
 <script src="js/plugins/plugins.min.js"></script>  -->
 <!-- Main JS -->
 <script src="js/main.js"></script>
-<script type="text/javascript">
-    window.onload=function() {
-        // alert("dasfdsfa");
-        var label = document.getElementById("labelValue").value;
-        // alert("dasfdsfa"+parseInt(label));
-        var loginA=document.getElementById("login1");
-        var registerA=document.getElementById("register1");
-        var loginForm=document.getElementById("lg1");
-        var registerForm=document.getElementById("lg2");
-
-        if (label == null || label == 1) {
-            loginA.setAttribute("class", "active");
-            loginForm.setAttribute("class","tab-pane active");
-            registerA.setAttribute("class", "");
-            registerForm.setAttribute("class", "tab-pane");
-        }
-        else {
-            loginA.setAttribute("class", "");
-            loginForm.setAttribute("class","tab-pane");
-            registerA.setAttribute("class", "active");
-            registerForm.setAttribute("class", "tab-pane active");
-        }
-    }
-</script>
+<script src="js/picUpload.js"></script>
 </body>
 </html>
