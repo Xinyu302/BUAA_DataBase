@@ -39,7 +39,7 @@ public class ProductController extends BaseController {
 
     @PostMapping("/releaseproduct")
     @ResponseBody
-    public Result<String> upLoadPhoto(HttpServletRequest request,ProductForm productForm) {
+    public Result<String> upLoadProduct(HttpServletRequest request,ProductForm productForm) {
         MultipartFile photo = productForm.getPhoto();
         if (photo == null) {
             return ResultUtil.fail("选择要上传的文件！");
