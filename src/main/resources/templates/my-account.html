@@ -200,8 +200,8 @@
                                                 <p>性别：<span th:text="${session.session_current_user.getGender()}"></span></p>
                                                 <p>年龄：<span th:text="${session.session_current_user.getAge()}"></span></p>
                                                 <p>电话号码：<span th:text="${session.session_current_user.getPhone()}"></span></p>
-                                                <p>电子邮箱：<span th:text="${session.session_current_user.getEmail()}"></span>yxy</p>
-                                                <p>宿舍地址：<span ></span>yxy</p>
+                                                <p>电子邮箱：<span th:text="${session.session_current_user.getEmail()}"></span></p>
+                                                <p>宿舍地址：<span th:text="${session.session_current_user.getAddress()}"></span></p>
                                                 <p>用户名：<span ></span>yxy</p>
                                                 <p>已购买物品：<span ></span>yxy</p>
                                                 <p>已出售物品：<span ></span>yxy</p>
@@ -292,7 +292,7 @@
                                         <div class="myaccount-content">
                                             <h3>用户详细信息</h3>
                                             <div class="account-details-form">
-                                                <form name="savechangeform">
+                                                <form id="savechangeform" onsubmit="return submitModifyForm();">
                                                     <div class="col-lg-8">
                                                         <div class="single-input-item">
                                                             <label for="age" class="required">年龄</label>
@@ -301,7 +301,7 @@
                                                     </div>
                                                     <div class="single-input-item col-lg-8">
                                                         <label for="email" class="required" >电子邮箱</label>
-                                                        <input type="email" id="email" name="email" th:value="${session.session_current_user.getAddress()}" />
+                                                        <input type="email" id="email" name="email" th:value="${session.session_current_user.getEmail()}" />
                                                     </div>
                                                     <br>
                                                     <div class="single-input-item col-lg-8">
@@ -401,7 +401,7 @@
 <script src="js/plugins/plugins.min.js"></script>  -->
 <!-- Main JS -->
 <script src="js/main.js"></script>
-<script src="js/transfer.js"></script>
+<script src="js/modify.js"></script>
 </body>
 
 </html>

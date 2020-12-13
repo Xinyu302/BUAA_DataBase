@@ -1,5 +1,6 @@
 package com.yxy.market1.controller;
 
+import com.yxy.market1.Utils.ResultUtil;
 import com.yxy.market1.entity.User;
 import com.yxy.market1.entity.dto.form.AccountForm;
 import com.yxy.market1.entity.dto.form.ModifyPassWordForm;
@@ -24,37 +25,41 @@ public class AccountOperateController {
 
     @PostMapping("/modifyuser")
     @ResponseBody
-    public Result modifyUserInfo(HttpServletRequest request, Model model, AccountForm accountForm, BindingResult bindingResult) throws Exception {
+    public Result<Integer> modifyUserInfo(HttpServletRequest request, Model model, AccountForm accountForm, BindingResult bindingResult) throws Exception {
         System.out.println("enter modify");
         User user = mUserService.findUserByName(accountForm.getsUserName());
         if (user.getAddress() == accountForm.getAddress() && user.getAge() == accountForm.getAge() &&
             user.getGender() == accountForm.getGender() && user.getEmail()
                 == accountForm.getEmail()) {
-            return Result.success();
+            return new Result<Integer>(200,"Success",0);
         }
         user.setAddress(accountForm.getAddress());
         user.setEmail(accountForm.getEmail());
         user.setGender(accountForm.getGender());
         user.setAge(accountForm.getAge());
         mUserService.modifyUserInfo(request, user);
-        return Result.success();
+        mUserService.joinSession(request, user);
+        return new Result<Integer>(200,"Success",0);
     }
 
     @PostMapping("/changepassword")
     @ResponseBody
     public Result changePassword(HttpServletRequest request, Model model, ModifyPassWordForm form) {
         if (form.getNewPassWord() != form.getConfirmPassWord()) {
-            return Result.failure("两次密码输入不一致");
+            return new Result<Integer>(500,"两次密码输入不一致",0);
         }
         User user = mUserService.findUserByName(form.getUserName());
         if (user == null) {
-            return Result.failure("用户不存在");
+            return new Result<Integer>(500,"用户不存在",0);
+//            return Result.failure("用户不存在");
         }
         if (user.getPassword() == DigestUtils.md2Hex(form.getNewPassWord())) {
-            return Result.failure("与原密码相同");
+            return new Result<Integer>(500,"与原密码相同",0);
+
+//            return Result.failure("与原密码相同");
         }
 
-        return Result.success();
+        return ResultUtil.success(0);
     }
 
     @GetMapping("/my-account")
