@@ -41,5 +41,5 @@ public interface IUserService {
 
     void changePassWord(String username, String password);
 
-    void modifyUserInfo(HttpServletRequest request, User user, AccountForm accountForm);
+    void modifyUserInfo(HttpServletRequest request, User user);
 }

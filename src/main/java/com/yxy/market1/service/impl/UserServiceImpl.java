@@ -84,7 +84,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void modifyUserInfo(HttpServletRequest request, User user, AccountForm accountForm) {
-
+    public void modifyUserInfo(HttpServletRequest request, User user) {
+        mMapper.save(user);
     }
 }

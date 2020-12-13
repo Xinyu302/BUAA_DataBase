@@ -24,6 +24,7 @@ public class FrontController {
         return "error";
     }
 
+
     /**
      * 前台首页
      * GET

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -21,14 +22,25 @@ public class AccountOperateController {
     @Autowired
     private IUserService mUserService;
 
-    @PostMapping("/modify")
-    public String modifyUserInfo(HttpServletRequest request, Model model, AccountForm accountForm, BindingResult bindingResult) throws Exception {
-        User user = mUserService.getUserSession(request);
-
-        return "modify";
+    @PostMapping("/modifyuser")
+    @ResponseBody
+    public Result modifyUserInfo(HttpServletRequest request, Model model, AccountForm accountForm, BindingResult bindingResult) throws Exception {
+        System.out.println("enter modify");
+        User user = mUserService.findUserByName(accountForm.getsUserName());
+        if (user.getAddress() == accountForm.getAddress() && user.getAge() == accountForm.getAge() &&
+            user.getGender() == accountForm.getGender() && user.getEmail()
+                == accountForm.getEmail()) {
+            return Result.success();
+        }
+        user.setAddress(accountForm.getAddress());
+        user.setEmail(accountForm.getEmail());
+        user.setGender(accountForm.getGender());
+        user.setAge(accountForm.getAge());
+        mUserService.modifyUserInfo(request, user);
+        return Result.success();
     }
 
-    @PostMapping("/changePassword")
+    @PostMapping("/changepassword")
     @ResponseBody
     public Result changePassword(HttpServletRequest request, Model model, ModifyPassWordForm form) {
         if (form.getNewPassWord() != form.getConfirmPassWord()) {
@@ -43,6 +55,12 @@ public class AccountOperateController {
         }
 
         return Result.success();
+    }
+
+    @GetMapping("/my-account")
+    public String myAccount(HttpServletRequest request,Model model) {
+//        User user = mUserService.findUserByName(userName);
+        return "my-account";
     }
 
 

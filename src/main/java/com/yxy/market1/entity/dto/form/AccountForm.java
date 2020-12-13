@@ -1,6 +1,8 @@
 package com.yxy.market1.entity.dto.form;
 
 public class AccountForm {
+    private String sUserName;
+
     private Integer age;
 
     private String email;
@@ -14,6 +16,14 @@ public class AccountForm {
 
     public Integer getAge() {
         return age;
+    }
+
+    public String getsUserName() {
+        return sUserName;
+    }
+
+    public void setsUserName(String sUserName) {
+        this.sUserName = sUserName;
     }
 
     public void setAge(Integer age) {
