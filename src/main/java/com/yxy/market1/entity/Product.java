@@ -1,16 +1,17 @@
 package com.yxy.market1.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="product_id")
+    @Column(name="id")
     private Integer id;
 
-    @Column(name = "product_name")
+    @Column(name = "name")
     private String name;
 
     @Column(name = "category")
@@ -27,4 +28,7 @@ public class Product {
 
     @Column(name = "picture")
     private String pictureAddr;
+
+    @Column(name = "releaseDate")
+    private Date date;
 }

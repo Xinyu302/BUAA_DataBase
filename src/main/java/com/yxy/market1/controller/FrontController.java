@@ -59,5 +59,9 @@ public class FrontController {
         return "login-register";
     }
 
+    @GetMapping("release")
+    public String pRelease(HttpServletRequest request) {
+        return "release";
+    }
 }
 
