@@ -13,11 +13,13 @@ function upload() {
         data: formData,
         contentType: false,
         processData: false,
-        success: function(data) {
-            if (data.code == 200) {
-                window.location.href="/product-details";
+        success: function(res) {
+            alert("fuck");
+            if (res.code == 200) {
+                alert(res.data);
+                window.location.href="/product-details/" + res.data;
             } else {
-                alert(data.msg);
+                alert(res.msg);
             }
         },
         error:function(data) {

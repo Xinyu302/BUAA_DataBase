@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,9 +40,9 @@ public class ProductController extends BaseController {
 //        return "product-details";
 //    }
 
-    @PostMapping("/releaseproduct")
+    @PostMapping("releaseproduct")
     @ResponseBody
-    public Result<String> upLoadProduct(HttpServletRequest request,ProductForm productForm) {
+    public Result<Integer> upLoadProduct(HttpServletRequest request,ProductForm productForm) {
         System.out.println("in here");
         MultipartFile photo = productForm.getPhoto();
         if (photo == null) {
@@ -75,11 +77,20 @@ public class ProductController extends BaseController {
         product.setDate(date);
         product.setDescription(productForm.getDescription());
         product.setName(productForm.getName());
-        product.setPictureAddr(savePath + filename);
+        String prefix = "/storage/";
+        product.setPictureAddr(prefix + filename);
 
-        productService.createProduct(product);
+        product = productService.createProduct(product);
+//        System.out.println(product.getId());
 //        return ResultUtil.success(savePath + filename);
-        return ResultUtil.success("work");
+        return ResultUtil.success(product.getId());
+    }
+
+    @GetMapping("product-details/{id}")
+    public String productDetailView(HttpServletRequest request, Model model, @PathVariable Integer id) throws Exception {
+        Product product = productService.findProductById(id);
+        addModelAtt(model,"product",product);
+        return "product-details";
     }
 //    @PostMapping("/userlogin.f")
 //    public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult) throws Exception {

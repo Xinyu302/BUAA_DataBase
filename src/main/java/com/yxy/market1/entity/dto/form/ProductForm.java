@@ -39,16 +39,16 @@ public class ProductForm {
         return category;
     }
 
-    public void setCategory(String catagory) {
-        this.category = catagory;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String decription) {
-        this.description = decription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getPrice() {

@@ -1,6 +1,6 @@
 package com.yxy.market1.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.yxy.market1.controller.base.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author Yxy
  */
 @Controller
-public class FrontController {
+public class FrontController extends BaseController {
 
     /**
      * 错误页
@@ -47,7 +47,8 @@ public class FrontController {
      * 前台用户登录页
      */
     @GetMapping("/userlogin")
-    public String pFrontUserLogin(HttpServletRequest request, Model model) {
+    public String pFrontUserLogin(HttpServletRequest request, Model model) throws Exception {
+        addModelAtt(model,"label",1);
         return "login-register";
     }
 
@@ -55,16 +56,17 @@ public class FrontController {
      * 前台用户注册
      */
     @GetMapping("/userregister")
-    public String pFrontUserRegister(HttpServletRequest request, Model model) {
+    public String pFrontUserRegister(HttpServletRequest request, Model model) throws Exception {
+        addModelAtt(model,"label",2);
         return "login-register";
     }
 
-    @GetMapping("release")
+    @GetMapping("/release")
     public String pRelease(HttpServletRequest request) {
         return "release";
     }
 
-    @GetMapping("product-details")
+    @GetMapping("/product-details")
     public String details(HttpServletRequest request) {
         return "product-details";
     }
