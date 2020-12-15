@@ -70,5 +70,10 @@ public class FrontController extends BaseController {
     public String details(HttpServletRequest request) {
         return "product-details";
     }
+
+    @GetMapping("/shop")
+    public String shopView(HttpServletRequest request) {
+        return "shop";
+    }
 }
 

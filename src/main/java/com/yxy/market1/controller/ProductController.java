@@ -4,6 +4,7 @@ import com.yxy.market1.Utils.ResultUtil;
 import com.yxy.market1.controller.base.BaseController;
 import com.yxy.market1.entity.Product;
 import com.yxy.market1.entity.dto.form.ProductForm;
+import com.yxy.market1.entity.dto.response.ProductResponce;
 import com.yxy.market1.entity.dto.response.Result;
 import com.yxy.market1.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import static com.yxy.market1.consts.ViewConsts.VIEW_LABEL;
 import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
+
 @Controller
 public class ProductController extends BaseController {
     @Autowired
@@ -42,7 +45,7 @@ public class ProductController extends BaseController {
 
     @PostMapping("releaseproduct")
     @ResponseBody
-    public Result<Integer> upLoadProduct(HttpServletRequest request,ProductForm productForm) {
+    public Result<Integer> upLoadProduct(HttpServletRequest request, ProductForm productForm) {
         System.out.println("in here");
         MultipartFile photo = productForm.getPhoto();
         if (photo == null) {
@@ -89,8 +92,19 @@ public class ProductController extends BaseController {
     @GetMapping("product-details/{id}")
     public String productDetailView(HttpServletRequest request, Model model, @PathVariable Integer id) throws Exception {
         Product product = productService.findProductById(id);
-        addModelAtt(model,"product",product);
+        addModelAtt(model, "product", product);
         return "product-details";
+    }
+
+    @PostMapping("display_goods")
+    @ResponseBody
+    public Result<List<ProductResponce>> getProductList(HttpServletRequest request) {
+        List<Product> productList = productService.findAllProduct();
+        List<ProductResponce> productResponces = new ArrayList<>();
+        for (Product p : productList) {
+            productResponces.add(new ProductResponce(p.getName(), p.getPrice(), p.getPictureAddr()));
+        }
+        return ResultUtil.success(productResponces);
     }
 //    @PostMapping("/userlogin.f")
 //    public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult) throws Exception {

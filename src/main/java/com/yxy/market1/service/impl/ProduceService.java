@@ -33,4 +33,9 @@ public class ProduceService implements IProductService {
     public List<Product> findProductByNameLike() {
         return null;
     }
+
+    @Override
+    public List<Product> findAllProduct() {
+        return pMapper.findAll();
+    }
 }

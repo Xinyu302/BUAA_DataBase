@@ -10,4 +10,6 @@ public interface IProductService {
     Product findProductById(Integer id);
 
     List<Product> findProductByNameLike();
+
+    List<Product> findAllProduct();
 }
