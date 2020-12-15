@@ -989,8 +989,13 @@
 
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function() {
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        // alert(serverPath);
         $.ajax({
-            url:"http://localhost:8086/display_goods",
+            url:serverPath + "/display_goods",
             type:"post",
             contentType: false,
             processData: false,

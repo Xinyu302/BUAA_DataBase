@@ -1,10 +1,13 @@
 function submitModifyForm() {
-    alert("fuck3");
 
     var form = document.getElementById('savechangeform'),
         formData = new FormData(form);
+    var urlPath = window.document.location.href;
+    var docPath = window.document.location.pathname;
+    var index = urlPath.indexOf(docPath);
+    var serverPath = urlPath.substring(0, index);
     $.ajax({
-        url:"http://localhost:8086/modifyuser",
+        url:serverPath+"/modifyuser",
         type:"post",
         data:formData,
         processData:false,

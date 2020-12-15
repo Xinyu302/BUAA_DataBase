@@ -43,7 +43,7 @@ public class ProductController extends BaseController {
 //        return "product-details";
 //    }
 
-    @PostMapping("releaseproduct")
+    @PostMapping("/releaseproduct")
     @ResponseBody
     public Result<Integer> upLoadProduct(HttpServletRequest request, ProductForm productForm) {
         System.out.println("in here");
@@ -89,14 +89,14 @@ public class ProductController extends BaseController {
         return ResultUtil.success(product.getId());
     }
 
-    @GetMapping("product-details/{id}")
+    @GetMapping("/product-details/{id}")
     public String productDetailView(HttpServletRequest request, Model model, @PathVariable Integer id) throws Exception {
         Product product = productService.findProductById(id);
         addModelAtt(model, "product", product);
         return "product-details";
     }
 
-    @PostMapping("display_goods")
+    @PostMapping("/display_goods")
     @ResponseBody
     public Result<List<ProductResponce>> getProductList(HttpServletRequest request) {
         List<Product> productList = productService.findAllProduct();
