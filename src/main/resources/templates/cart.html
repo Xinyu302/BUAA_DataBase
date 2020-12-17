@@ -394,6 +394,37 @@
 <!-- All JS is here
 ============================================ -->
 <script>
+    function add_to_cart(id){
+        alert(id);
+        var userId = document.getElementById("userId").value;
+        alert(userId);
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("userId", Number(userId));
+        formData.append("productId", id);
+        $.ajax({
+            url:serverPath + "/get-cart",
+            type:"post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(res) {
+                if (res.code === 200) {
+                    alert("successfully added");
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error:function(data) {
+                alert("add to cart加载失败");
+            }
+        });
+        return false;
+    }
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function() {
         var urlPath = window.document.location.href;
@@ -402,7 +433,7 @@
         var serverPath = urlPath.substring(0, index);
         // alert(serverPath);
         $.ajax({
-            url:serverPath + "/display_goods",
+            url:serverPath + "/get-cart",
             type:"post",
             contentType: false,
             processData: false,

@@ -179,14 +179,8 @@
                                                 <ul class="sub-menu-style">
                                                     <li><a href="index.html">Home version 1 </a></li>
                                                     <li><a href="index-2.html">Home version 2</a></li>
-                                                    <li><a href="index-3.html">Home version 3</a></li>
                                                     <li><a href="index-4.html">Home version 4</a></li>
-                                                    <li><a href="index-5.html">Home version 5</a></li>
-                                                    <li><a href="index-6.html">Home version 6</a></li>
-                                                    <li><a href="index-7.html">Home version 7</a></li>
                                                     <li><a href="shop.html">Home version 8</a></li>
-                                                    <li><a href="index-9.html">Home version 9</a></li>
-                                                    <li><a href="index-10.html">Home version 10</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="shop.html">SHOP </a>
@@ -470,7 +464,7 @@
                                                     <span>￥{{ item.price }}</span>
                                                 </div>
                                                 <div class="pro-add-to-cart">
-                                                    <button title="Add to Cart" onclick="add_to_cart(item.id)">加到购物车</button>
+                                                    <button title="Add to Cart" :value="item.id" onclick="add_to_cart(value)">加到购物车</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -981,13 +975,43 @@
     </div>
     <!-- Modal end -->
 </div>
-<input type="hidden" th:value="${session.session_current_user.getUserId()}" id="userId">
+<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}" >
 <!-- All JS is here
 ============================================ -->
 
 <script>
 
-
+    function add_to_cart(id){
+        alert(id);
+        var userId = document.getElementById("userId").value;
+        alert(userId);
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("userId", Number(userId));
+        formData.append("productId", id);
+        $.ajax({
+            url:serverPath + "/add-to-cart",
+            type:"post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(res) {
+                if (res.code === 200) {
+                    alert("successfully added");
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error:function(data) {
+                alert("add to cart加载失败");
+            }
+        });
+        return false;
+    }
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function() {
         var urlPath = window.document.location.href;
@@ -1009,38 +1033,6 @@
                         data: {
                             good_list: res.data
                         },
-                        method:{
-                            add_to_cart: function (id){
-                                alert("fuck");
-                                var userId = document.getElementById("userId");
-                                var urlPath = window.document.location.href;
-                                var docPath = window.document.location.pathname;
-                                var index = urlPath.indexOf(docPath);
-                                var serverPath = urlPath.substring(0, index);
-                                var formData = new FormData(form);
-                                formData.append("userId", userId);
-                                formData.append("productId", id);
-                                $.ajax({
-                                    url:serverPath + "/add-to-cart",
-                                    type:"post",
-                                    data: formData,
-                                    contentType: false,
-                                    processData: false,
-                                    success: function(res) {
-                                        if (res.code === 200) {
-                                            alert("successfully added");
-                                            // window.location.href="/product-details/" + res.data;
-                                        } else {
-                                            alert(res.msg);
-                                        }
-                                    },
-                                    error:function(data) {
-                                        alert("add to cart加载失败");
-                                    }
-                                });
-                                return false;
-                            }
-                        }
                     });
                     alert(list[0].good_name);
                     // window.location.href="/product-details/" + res.data;
