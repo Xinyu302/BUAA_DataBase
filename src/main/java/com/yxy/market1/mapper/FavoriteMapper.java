@@ -11,4 +11,6 @@ import java.util.List;
 public interface FavoriteMapper extends JpaRepository<Favorite, Integer> {
 //    @Query(value = "select p from favorite p where p.userid=?1 and p.productid=?2")
     List<Favorite> findFavoriteByUserIdAndProductId(Integer userId, Integer productId);
+
+    List<Integer> findProductIdByUserId(Integer userId);
 }

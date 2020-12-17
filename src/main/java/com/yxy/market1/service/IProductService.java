@@ -9,6 +9,8 @@ public interface IProductService {
 
     Product findProductById(Integer id);
 
+    List<Product> findProductByIdIn(List<Integer> ids);
+
     List<Product> findProductByNameLike();
 
     List<Product> findAllProduct();

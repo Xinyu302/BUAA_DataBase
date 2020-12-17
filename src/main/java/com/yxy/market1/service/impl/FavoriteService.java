@@ -28,4 +28,9 @@ public class FavoriteService implements IFavoriteService {
         }
         return list.get(0);
     }
+
+    @Override
+    public List<Integer> findProductIdByUserId(Integer userId) {
+        return fMapper.findProductIdByUserId(userId);
+    }
 }

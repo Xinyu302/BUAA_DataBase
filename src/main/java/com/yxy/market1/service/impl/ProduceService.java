@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 public class ProduceService implements IProductService {
     @Autowired
-    ProductMapper pMapper;
+    private ProductMapper pMapper;
 
     @Override
     public Product createProduct(Product product) {
@@ -27,6 +27,11 @@ public class ProduceService implements IProductService {
             return null;
         }
         return pMapper.findById(id).get();
+    }
+
+    @Override
+    public List<Product> findProductByIdIn(List<Integer> ids) {
+        return pMapper.findByIdIn(ids);
     }
 
     @Override
