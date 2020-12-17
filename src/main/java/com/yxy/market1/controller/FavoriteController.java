@@ -44,8 +44,11 @@ public class FavoriteController extends BaseController {
     @PostMapping("get-cart")
     @ResponseBody
     public Result<List<ProductResponce>> getFavorites(HttpServletRequest request,Integer userId) {
+        System.out.println(userId);
         List<Integer> product = fService.findProductIdByUserId(userId);
+        System.out.println(product);
         List<Product> products = pService.findProductByIdIn(product);
+        System.out.println(products);
         List<ProductResponce> responces = new ArrayList<>();
         for (Product p : products) {
             responces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));

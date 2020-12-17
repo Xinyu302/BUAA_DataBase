@@ -987,36 +987,7 @@
 
 <script>
 
-    function add_to_cart(id){
-        alert("fuck");
-        var userId = document.getElementById("userId");
-        var urlPath = window.document.location.href;
-        var docPath = window.document.location.pathname;
-        var index = urlPath.indexOf(docPath);
-        var serverPath = urlPath.substring(0, index);
-        var formData = new FormData(form);
-        formData.append("userId", userId);
-        formData.append("productId", id);
-        $.ajax({
-            url:serverPath + "/add-to-cart",
-            type:"post",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(res) {
-                if (res.code === 200) {
-                    alert("successfully added");
-                    // window.location.href="/product-details/" + res.data;
-                } else {
-                    alert(res.msg);
-                }
-            },
-            error:function(data) {
-                alert("add to cart加载失败");
-            }
-        });
-        return false;
-    }
+
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function() {
         var urlPath = window.document.location.href;
@@ -1038,6 +1009,38 @@
                         data: {
                             good_list: res.data
                         },
+                        method:{
+                            add_to_cart: function (id){
+                                alert("fuck");
+                                var userId = document.getElementById("userId");
+                                var urlPath = window.document.location.href;
+                                var docPath = window.document.location.pathname;
+                                var index = urlPath.indexOf(docPath);
+                                var serverPath = urlPath.substring(0, index);
+                                var formData = new FormData(form);
+                                formData.append("userId", userId);
+                                formData.append("productId", id);
+                                $.ajax({
+                                    url:serverPath + "/add-to-cart",
+                                    type:"post",
+                                    data: formData,
+                                    contentType: false,
+                                    processData: false,
+                                    success: function(res) {
+                                        if (res.code === 200) {
+                                            alert("successfully added");
+                                            // window.location.href="/product-details/" + res.data;
+                                        } else {
+                                            alert(res.msg);
+                                        }
+                                    },
+                                    error:function(data) {
+                                        alert("add to cart加载失败");
+                                    }
+                                });
+                                return false;
+                            }
+                        }
                     });
                     alert(list[0].good_name);
                     // window.location.href="/product-details/" + res.data;
