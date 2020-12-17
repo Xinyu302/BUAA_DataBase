@@ -75,5 +75,10 @@ public class FrontController extends BaseController {
     public String shopView(HttpServletRequest request) {
         return "shop";
     }
+
+    @GetMapping("/cart")
+    public String gotoCart(HttpServletRequest request) {
+        return "cart";
+    }
 }
 

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -62,4 +63,8 @@ public class FavoriteController extends BaseController {
         fService.deleteAllProductsByUserId(userId);
         return ResultUtil.success(0);
     }
+
+//    @PostMapping("delete-one-cart")
+//    @ResponseBody
+//    public Result<Integer> deleteOneFavorite()
 }
