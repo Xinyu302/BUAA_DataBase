@@ -102,7 +102,7 @@ public class ProductController extends BaseController {
         List<Product> productList = productService.findAllProduct();
         List<ProductResponce> productResponces = new ArrayList<>();
         for (Product p : productList) {
-            productResponces.add(new ProductResponce(p.getName(), p.getPrice(), p.getPictureAddr()));
+            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
         }
         return ResultUtil.success(productResponces);
     }

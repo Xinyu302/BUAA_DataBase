@@ -2,7 +2,7 @@
     
     Template Name: Norda - Minimal eCommerce HTML Template
     Version: 1.0
-    ����ģ�壺http://www.bootstrapmb.com/
+    ����ģ�壺http://www.bootstrapmb.com/
 -----------------------------------------------------------------------------------
     
     CSS INDEX
@@ -18275,222 +18275,106 @@ textarea:focus {
 
 /*-------- 20. Cart style ---------*/
 h3.cart-page-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 15px;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 15px;
 }
 
+/* cart-table-content 下的所有table样式 */
 .cart-table-content table {
-  border: 1px solid #ebebeb;
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table {
+    border: 1px solid #ebebeb;
     width: 100%;
-  }
 }
 
+/*thead > tr : 只选择thead仅下一级的tr*/
+/*上方标题栏底色*/
 .cart-table-content table thead > tr {
-  background-color: #f9f9f9;
-  border: 1px solid #ebebeb;
+    background-color: #f9f9f9;
+    border: 1px solid #ebebeb;
 }
 
-@media only screen and (max-width: 767px) {
-  .cart-table-content table thead > tr {
-    width: 100%;
-    display: block;
-    padding: 10px 0;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .cart-table-content table thead > tr {
-    width: inherit;
-    display: inline-block;
-    padding: 10px 0;
-  }
-}
-
+/*thead > tr th: 只选择thead仅下一级的tr,tr 下的任意一级th */
+/*标题栏整体填充等格式*/
 .cart-table-content table thead > tr th {
-  border-top: medium none;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 21px 45px 22px;
-  text-align: center;
-  text-transform: capitalize;
-  vertical-align: middle;
-  white-space: nowrap;
+    border-top: medium none;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 21px 45px 22px;
+    text-align: center;
+    text-transform: capitalize;
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .cart-table-content table thead > tr th {
-    padding: 21px 35px 22px;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .cart-table-content table thead > tr th {
-    padding: 21px 15px 22px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table thead > tr th {
-    padding: 0px 20px 5px;
-    width: 100%;
-    display: block;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .cart-table-content table thead > tr th {
-    width: inherit;
-    display: inline-block;
-  }
-}
-
+/*其他栏的边框*/
 .cart-table-content table tbody > tr {
-  border-bottom: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+    /*width: 100%;*/
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .cart-table-content table tbody > tr {
-    width: 50%;
-    float: left;
-  }
-}
-
+/*缩图*/
 .cart-table-content table tbody > tr td.product-thumbnail {
-  width: 150px;
+    /*width: 150px;*/
+    padding-left: 21px;
+    width: 15%;
 }
 
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-thumbnail {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-    padding-top: 30px;
-    padding-bottom: 5px;
-  }
-}
-
+/*名字*/
 .cart-table-content table tbody > tr td.product-name {
-  width: 435px;
+    width: 45%;
+    padding-left: 25px;
+    /*font-size: 30px;*/
 }
 
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-name {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-  }
-}
-
+/*当它是一个a(链接时)*/
 .cart-table-content table tbody > tr td.product-name a {
-  font-size: 15px;
+    font-size: 15px;
 }
-
+/*a:hover  鼠标移动到上面*/
 .cart-table-content table tbody > tr td.product-name a:hover {
-  color: #ff2f2f;
+    color: #ff2f2f;
 }
 
 .cart-table-content table tbody > tr td.product-price-cart {
-  width: 435px;
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-price-cart {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-  }
+    width: 30%;
 }
 
 .cart-table-content table tbody > tr td.product-price-cart span {
-  font-weight: 500;
+    font-weight: 500;
 }
 
-.cart-table-content table tbody > tr td.product-quantity {
-  width: 435px;
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-quantity {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-  }
-}
-
-.cart-table-content table tbody > tr td.product-remove {
-  width: 100px;
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-remove {
-    width: 100%;
-    display: block;
-    overflow: hidden;
-    padding-bottom: 21px;
-  }
-}
+/*.cart-table-content table tbody > tr td.product-remove {*/
+/*}*/
 
 .cart-table-content table tbody > tr td.product-remove a {
-  font-size: 20px;
+    width: 10%;
+    font-size: 20px;
 }
 
 .cart-table-content table tbody > tr td.product-remove a:hover {
-  color: #ff2f2f;
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td.product-wishlist-cart {
-    padding-bottom: 30px;
-  }
+    color: #ff2f2f;
 }
 
 .cart-table-content table tbody > tr td.product-wishlist-cart > a {
-  background-color: #000000;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
-  padding: 10px 12px 11px;
-  display: inline-block;
-  text-transform: capitalize;
+    background-color: #000000;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 10px 12px 11px;
+    display: inline-block;
+    text-transform: capitalize;
 }
 
 .cart-table-content table tbody > tr td.product-wishlist-cart > a:hover {
-  background-color: #ff2f2f;
+    background-color: #ff2f2f;
 }
 
 .cart-table-content table tbody > tr td {
-  font-size: 15px;
-  padding: 30px 0;
-  text-align: center;
-  font-weight: 500;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .cart-table-content table tbody > tr td {
-    padding: 30px 0 30px 10px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .cart-table-content table tbody > tr td {
-    padding: 6px 0 6px 0px;
-    width: 100%;
-    display: block;
-    overflow: hidden;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .cart-table-content table tbody > tr td {
-    text-align: left;
-    padding: 6px 20px 6px 20px;
-  }
+    font-size: 15px;
+    padding: 30px 0;
+    text-align: center;
+    font-weight: 500;
 }
 
 .cart-shiping-update-wrapper {
