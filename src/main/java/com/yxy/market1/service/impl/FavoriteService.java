@@ -33,4 +33,9 @@ public class FavoriteService implements IFavoriteService {
     public List<Integer> findProductIdByUserId(Integer userId) {
         return fMapper.findProductIdByUserId(userId);
     }
+
+    @Override
+    public void deleteAllProductsByUserId(Integer userId) {
+        fMapper.deleteAllProductsByUserId(userId);
+    }
 }

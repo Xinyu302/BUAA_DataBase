@@ -55,4 +55,11 @@ public class FavoriteController extends BaseController {
         }
         return ResultUtil.success(responces);
     }
+
+    @PostMapping("delete-all-cart")
+    @ResponseBody
+    public Result<Integer> deleteAllFavorites(HttpServletRequest request,Integer userId) {
+        fService.deleteAllProductsByUserId(userId);
+        return ResultUtil.success(0);
+    }
 }
