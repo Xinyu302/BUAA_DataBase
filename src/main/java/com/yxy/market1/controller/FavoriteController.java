@@ -64,7 +64,10 @@ public class FavoriteController extends BaseController {
         return ResultUtil.success(0);
     }
 
-//    @PostMapping("delete-one-cart")
-//    @ResponseBody
-//    public Result<Integer> deleteOneFavorite()
+    @PostMapping("delete-one-cart")
+    @ResponseBody
+    public Result<Integer> deleteOneFavorite(HttpServletRequest request,FavoriteForm form) {
+        fService.deleteProductByUserIdAndProductId(form.getUserId(), form.getProductId());
+        return ResultUtil.success(0);
+    }
 }

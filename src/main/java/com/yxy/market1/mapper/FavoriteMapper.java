@@ -24,4 +24,9 @@ public interface FavoriteMapper extends JpaRepository<Favorite, Integer> {
     @Query("delete FROM Favorite f where f.userId=?1")
     void deleteAllProductsByUserId(Integer userId);
 
+    @Modifying
+    @Transactional
+    @Query("delete FROM Favorite f where f.userId=?1 and f.productId=?2")
+    void deleteProductByUserIdAndProductId(Integer userId,Integer productId);
+
 }

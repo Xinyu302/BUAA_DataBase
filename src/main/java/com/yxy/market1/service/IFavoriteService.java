@@ -14,4 +14,6 @@ public interface IFavoriteService {
     List<Integer> findProductIdByUserId(Integer userId);
 
     void deleteAllProductsByUserId(Integer userId);
+
+    void deleteProductByUserIdAndProductId(Integer userId, Integer productId);
 }
