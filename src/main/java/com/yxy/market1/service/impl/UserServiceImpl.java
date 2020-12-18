@@ -12,10 +12,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
+
+import static com.yxy.market1.consts.CookieConsts.COOKIE_PASSWORD;
+import static com.yxy.market1.consts.CookieConsts.COOKIE_USERNAME;
 
 @Service
 @Transactional
@@ -86,5 +90,34 @@ public class UserServiceImpl implements IUserService {
     @Override
     public void modifyUserInfo(HttpServletRequest request, User user) {
         mMapper.save(user);
+    }
+
+    @Override
+    public void checkCookie(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        String username = "";
+        String password = "";
+        if (null != cookies) {
+            for (Cookie cookie : cookies) {
+                System.out.println(cookie.getName());
+                System.out.println(cookie.getValue());
+                if (cookie.getName().equals(COOKIE_USERNAME)) {
+                    username = cookie.getValue();
+                } else  if (cookie.getName().equals(COOKIE_PASSWORD)) {
+                    password = cookie.getValue();
+                }
+            }
+//            System.out.println(username);
+//            System.out.println(password);
+            if (username.length() > 0 && password.length() > 0) {
+                System.out.println("in here");;
+                UserLoginForm loginForm = new UserLoginForm();
+                loginForm.setPassword(password);
+                loginForm.setUsername(username);
+                User user = loginAuthentication(loginForm);
+                joinSession(request, user);
+            }
+
+        }
     }
 }

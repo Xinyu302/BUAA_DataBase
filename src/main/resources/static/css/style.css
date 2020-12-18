@@ -18313,10 +18313,11 @@ h3.cart-page-title {
 }
 
 /*缩图*/
-.cart-table-content table tbody > tr td.product-thumbnail {
+.cart-table-content table tbody > tr td.product-thumbnail img{
     /*width: 150px;*/
-    padding-left: 21px;
+    /*padding-left: 21px;*/
     width: 150px;
+    max-width: 25%;
 }
 
 /*名字*/

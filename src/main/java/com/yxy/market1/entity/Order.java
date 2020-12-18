@@ -1,32 +1,60 @@
 package com.yxy.market1.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
-@Table(name="ORDER_USER")
+@Table(name="order")
 public class Order {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    private String orderName;
+
+    @Column(name = "buyerid")
     private Integer buyerId;
+
+    @Column(name = "sellerid")
     private Integer sellerId;
+
+    @Column(name = "productid")
+    private Integer productId;
     //private User user;
 
-    @Id
-    @GeneratedValue
+    @Column(name = "status")
+    private String status;
+
+    public Order() {
+    }
+
     public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getOrderName() {
-        return orderName;
+
+    public Integer getBuyerId() {
+        return buyerId;
     }
-    public void setOrderName(String orderName) {
-        this.orderName = orderName;
+
+    public void setBuyerId(Integer buyerId) {
+        this.buyerId = buyerId;
+    }
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
+    public Integer getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 }

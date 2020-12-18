@@ -40,6 +40,7 @@
 <body>
 
 <input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
+
 <div class="main-wrapper">
     <header class="header-area">
         <div class="container">
@@ -262,7 +263,7 @@
                     <a class="btn-hover cart-btn-style" href="cart.html">view cart</a>
                     <a class="no-mrg btn-hover cart-btn-style" href="checkout.html">checkout</a>
                 </div>
-          </div>
+            </div>
         </div>
     </div>
     <div class="cart-main-area pt-115 pb-120">
@@ -285,13 +286,14 @@
                                 <tr v-for="item in cart_list">
                                     <td class="product-thumbnail ">
                                         <a :href="'/product-details/'+item.id">
-                                            <img :src="item.photo_address" alt="">
+                                            <img :src="item.photo_address" class="img-responsive center-block" alt="">
                                         </a>
                                     </td>
-                                    <td class="product-name"><a href="#">{{ item.good_name }}</a></td>
+                                    <td class="product-name"><a :href="'/product-details/'+item.id">{{ item.good_name
+                                        }}</a></td>
                                     <td class="product-price-cart"><span class="amount">￥{{ item.price }}</span></td>
                                     <td class="product-remove">
-                                        <a href="#"><i class="icon_close"></i></a>
+                                        <a :id="'fuck-'+item.id" class="display" onclick="delete_one_cart(id)"><i class="icon_close"></i></a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -304,7 +306,7 @@
                                         <a href="#">Continue Shopping</a>
                                     </div>
                                     <div class="cart-clear">
-                                        <button  onclick="delete_all_cart()">Delete All</button>
+                                        <button onclick="delete_all_cart()">Delete All</button>
                                         <a href="#">Clear Cart</a>
                                     </div>
                                 </div>
@@ -401,10 +403,43 @@
 
 
 <script>
-
-    function delete_all_cart(){
+    function delete_one_cart(id) {
         var userId = document.getElementById("userId").value;
-        alert(userId);
+        alert(id);
+        var fuck_idx = id.indexOf("-");
+        var product_id = id.substring(fuck_idx+1);
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("userId", Number(userId));
+        formData.append("productId", Number(product_id));
+        $.ajax({
+            url: serverPath + "/delete-one-cart",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.code === 200) {
+                    alert("successfly delete this one");
+                    location.reload();
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function (data) {
+                alert("delete this good failed");
+            }
+        });
+        return false;
+    }
+
+    function delete_all_cart() {
+        var userId = document.getElementById("userId").value;
+        // alert(userId);
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
@@ -412,25 +447,27 @@
         var formData = new FormData();
         formData.append("userId", Number(userId));
         $.ajax({
-            url:serverPath + "/delete-all-cart",
-            type:"post",
+            url: serverPath + "/delete-all-cart",
+            type: "post",
             data: formData,
             contentType: false,
             processData: false,
-            success: function(res) {
+            success: function (res) {
                 if (res.code === 200) {
                     alert("successfly delete");
+                    // location.reload();
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);
                 }
             },
-            error:function(data) {
-                alert("delete the cart failed");
+            error: function (data) {
+                alert("delete All cart failed");
             }
         });
         return false;
     }
+
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function () {
         var userId = document.getElementById("userId").value;
@@ -440,7 +477,7 @@
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
         formData.append("userId", Number(userId));
-        alert(Number(userId));
+        // alert(Number(userId));
         // alert(serverPath);
         $.ajax({
             url: serverPath + "/get-cart",
@@ -450,15 +487,15 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("nb");
-                    alert(res.data);
+                    // alert("nb");
+                    // alert(res.data);
                     var vm = new Vue({
                         el: '#vue_carts_display',
                         data: {
                             cart_list: res.data
                         },
                     });
-                    alert(cart_list[0].good_name);
+                    // alert(cart_list[0].good_name);
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);

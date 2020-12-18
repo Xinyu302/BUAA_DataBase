@@ -13,26 +13,31 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static com.yxy.market1.consts.ViewConsts.VIEW_LABEL;
 import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
+import static com.yxy.market1.consts.CookieConsts.*;
 @Controller
 public class LoginController extends BaseController {
     @Autowired
     private IUserService mUserService;
 
     @GetMapping("/")
-    public String indexPage(){
+    public String indexPage(HttpServletRequest request){
+        mUserService.checkCookie(request);
         return "index";
     }
+
     /**
      * 前台用户登录
      * 表单提交
      */
     @PostMapping("/userlogin.f")
-    public String fFrontUserLogin(HttpServletRequest request, Model model,UserLoginForm loginForm, BindingResult bindingResult) throws Exception {
+    public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult, HttpServletResponse response) throws Exception {
         System.out.println("this func is called");
         System.out.println("username is " + loginForm.getUsername());
         System.out.println("username is " + loginForm.getPassword());
@@ -45,6 +50,14 @@ public class LoginController extends BaseController {
         if (null != user) {
 //            System.out.println("login now");
             mUserService.joinSession(request, user);
+            Cookie usercookie = new Cookie(COOKIE_USERNAME, loginForm.getUsername());
+            usercookie.setMaxAge(24 * 60 * 60);
+            Cookie userpassword = new Cookie(COOKIE_PASSWORD, loginForm.getPassword());
+            usercookie.setPath(request.getContextPath());
+            userpassword.setMaxAge(24 * 60 * 60);
+            userpassword.setPath(request.getContextPath());
+            response.addCookie(usercookie);
+            response.addCookie(userpassword);
             return "redirect:/";
         }
         addModelAtt(model, VIEW_LABEL, 1);
