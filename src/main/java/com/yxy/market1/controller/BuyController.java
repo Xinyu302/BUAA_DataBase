@@ -73,8 +73,16 @@ public class BuyController extends BaseController {
         Order order = new Order();
         order.setBuyerId(u.getUserId());
         order.setSellerId(p.getSellerid());
+        order.setStatus("未完成");
 //        order.setSellerId(p.getSellerid());
         orderService.createOrder(order);
         return ResultUtil.success(0);
+    }
+
+    @PostMapping("/endorder")
+    @ResponseBody
+    public Result<Integer> endOrder(HttpServletRequest request, Integer orderId) {
+        Order order = orderService.getOrderById(orderId);
+        Integer   dsfs
     }
 }

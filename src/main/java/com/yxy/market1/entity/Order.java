@@ -57,4 +57,12 @@ public class Order {
     public void setProductId(Integer productId) {
         this.productId = productId;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }

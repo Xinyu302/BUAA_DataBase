@@ -80,5 +80,15 @@ public class FrontController extends BaseController {
     public String gotoCart(HttpServletRequest request) {
         return "cart";
     }
+
+    @GetMapping("/comment")
+    public String fuckComment(HttpServletRequest request) {
+        return "comment";
+    }
+
+    @GetMapping("/order")
+    public String jumpOrder() {
+        return "order";
+    }
 }
 
