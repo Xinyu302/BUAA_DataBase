@@ -15,7 +15,7 @@ public class ProductForm {
 
 //    private String status;
 
-    private int sellerId;
+    private Integer sellerId;
 
     private MultipartFile photo;
 
@@ -63,7 +63,7 @@ public class ProductForm {
         return sellerId;
     }
 
-    public void setSellerId(int sellerId) {
+    public void setSellerId(Integer sellerId) {
         this.sellerId = sellerId;
     }
 }

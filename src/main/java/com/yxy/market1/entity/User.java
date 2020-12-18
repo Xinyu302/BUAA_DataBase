@@ -17,7 +17,7 @@ public class User {
     private String password;
 
     @Column(name = "age")
-   private Integer age;
+    private Integer age;
 
     @Column(name = "gender")
     private String gender;
@@ -30,6 +30,17 @@ public class User {
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "money")
+    private Double money;
+
+    public Double getMoney() {
+        return money;
+    }
+
+    public void setMoney(Double money) {
+        this.money = money;
+    }
 
     public String getUsername() {
         return username;

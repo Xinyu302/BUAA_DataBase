@@ -11,7 +11,13 @@ public interface IProductService {
 
     List<Product> findProductByIdIn(List<Integer> ids);
 
-    List<Product> findProductByNameLike();
+    List<Product> findProductByNameLike(String name);
 
     List<Product> findAllProduct();
+
+    List<Product> findProductsByCategory(String category);
+
+    Integer findSellerIdById(Integer id);
+
+    void setStatus(Integer id,String status);
 }

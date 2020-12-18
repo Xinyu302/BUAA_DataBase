@@ -21,10 +21,24 @@ public class Notice {
     private String content;
 
     @Column(name = "status")
-    private String Status;
+    private String status;
 
     public Notice() {
 
+    }
+
+    public Notice(Integer user_id, Date time, String content) {
+        this.user_id = user_id;
+        this.time = time;
+        this.content = content;
+        this.status = "未读";
+    }
+
+    public Notice(Integer user_id, Date time, String content, String status) {
+        this.user_id = user_id;
+        this.time = time;
+        this.content = content;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -60,10 +74,10 @@ public class Notice {
     }
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
     }
 }

@@ -29,6 +29,9 @@ public class Product {
     @Column(name = "picture")
     private String pictureAddr;
 
+    @Column(name = "sellerid")
+    private Integer sellerid;
+
 //    @Column(name = "releaseDate")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -95,5 +98,13 @@ public class Product {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Integer getSellerid() {
+        return sellerid;
+    }
+
+    public void setSellerid(Integer sellerid) {
+        this.sellerid = sellerid;
     }
 }

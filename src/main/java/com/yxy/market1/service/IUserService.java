@@ -1,16 +1,13 @@
 package com.yxy.market1.service;
 
 import com.yxy.market1.entity.User;
-import com.yxy.market1.entity.dto.form.AccountForm;
 import com.yxy.market1.entity.dto.form.ModifyPassWordForm;
 import com.yxy.market1.entity.dto.form.UserLoginForm;
 import com.yxy.market1.entity.dto.form.UserRegisterForm;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
-import static com.yxy.market1.consts.CookieConsts.COOKIE_PASSWORD;
-import static com.yxy.market1.consts.CookieConsts.COOKIE_USERNAME;
+import java.util.Optional;
 
 /**
  * 用户信息操作接口
@@ -48,4 +45,6 @@ public interface IUserService {
     void modifyUserInfo(HttpServletRequest request, User user);
 
     void checkCookie(HttpServletRequest request);
+
+    Optional<User> findUserById(Integer id);
 }

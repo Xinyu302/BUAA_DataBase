@@ -2,7 +2,6 @@ package com.yxy.market1.service.impl;
 
 import com.yxy.market1.consts.SessionConstants;
 import com.yxy.market1.entity.User;
-import com.yxy.market1.entity.dto.form.AccountForm;
 import com.yxy.market1.entity.dto.form.ModifyPassWordForm;
 import com.yxy.market1.entity.dto.form.UserLoginForm;
 import com.yxy.market1.entity.dto.form.UserRegisterForm;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 import static com.yxy.market1.consts.CookieConsts.COOKIE_PASSWORD;
 import static com.yxy.market1.consts.CookieConsts.COOKIE_USERNAME;
@@ -119,5 +119,10 @@ public class UserServiceImpl implements IUserService {
             }
 
         }
+    }
+
+    @Override
+    public Optional<User> findUserById(Integer id) {
+        return mMapper.findById(id);
     }
 }

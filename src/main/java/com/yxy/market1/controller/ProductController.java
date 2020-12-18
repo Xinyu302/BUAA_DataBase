@@ -2,10 +2,12 @@ package com.yxy.market1.controller;
 
 import com.yxy.market1.Utils.ResultUtil;
 import com.yxy.market1.controller.base.BaseController;
+import com.yxy.market1.entity.Notice;
 import com.yxy.market1.entity.Product;
 import com.yxy.market1.entity.dto.form.ProductForm;
 import com.yxy.market1.entity.dto.response.ProductResponce;
 import com.yxy.market1.entity.dto.response.Result;
+import com.yxy.market1.service.INoticeService;
 import com.yxy.market1.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,8 @@ import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
 public class ProductController extends BaseController {
     @Autowired
     private IProductService productService;
+    @Autowired
+    private INoticeService noticeService;
 
 //    @PostMapping("/releaseproduct")
 //    public String createProduct(HttpServletRequest request, Model model, ProductForm productForm) {
@@ -80,10 +84,15 @@ public class ProductController extends BaseController {
         product.setDate(date);
         product.setDescription(productForm.getDescription());
         product.setName(productForm.getName());
+        product.setSellerid(productForm.getSellerId());
         String prefix = "/storage/";
         product.setPictureAddr(prefix + filename);
 
+        product.setStatus("已发布");
         product = productService.createProduct(product);
+        String content = "发布了商品";
+        Notice notice = new Notice(Integer.valueOf(productForm.getSellerId()), date, content,"未读");
+        noticeService.addNotice(notice);
 //        System.out.println(product.getId());
 //        return ResultUtil.success(savePath + filename);
         return ResultUtil.success(product.getId());
@@ -106,6 +115,31 @@ public class ProductController extends BaseController {
         }
         return ResultUtil.success(productResponces);
     }
+
+    @PostMapping("/category_product")
+    @ResponseBody
+    public Result<List<ProductResponce>> getProductListByCategory(HttpServletRequest request,String category) {
+        List<Product> productList = productService.findProductsByCategory(category);
+        List<ProductResponce> productResponces = new ArrayList<>();
+        for (Product p : productList) {
+            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+        }
+        return ResultUtil.success(productResponces);
+    }
+
+    @PostMapping("/namelike_product")
+    @ResponseBody
+    public Result<List<ProductResponce>> getProductListByNameLike(HttpServletRequest request, String namelike) {
+        System.out.println(namelike);
+        List<Product> productList = productService.findProductByNameLike(namelike);
+        System.out.println(productList.size());
+        List<ProductResponce> productResponces = new ArrayList<>();
+        for (Product p : productList) {
+            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+        }
+        return ResultUtil.success(productResponces);
+    }
+
 //    @PostMapping("/userlogin.f")
 //    public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult) throws Exception {
 //        System.out.println("this func is called");
