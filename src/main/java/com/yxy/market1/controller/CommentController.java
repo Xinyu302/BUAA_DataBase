@@ -3,7 +3,6 @@ package com.yxy.market1.controller;
 import com.yxy.market1.Utils.ResultUtil;
 import com.yxy.market1.controller.base.BaseController;
 import com.yxy.market1.entity.Comment;
-import com.yxy.market1.entity.User;
 import com.yxy.market1.entity.dto.response.CommentResponse;
 import com.yxy.market1.entity.dto.response.Result;
 import com.yxy.market1.service.ICommentService;
@@ -29,9 +28,9 @@ public class CommentController extends BaseController {
         Date date = new Date();
         Comment comment1 = new Comment();
         comment1.setContent(content);
-        comment1.setProduct_id(productId);
+        comment1.setProductid(productId);
         comment1.setTime(date);
-        comment1.setUser_id(userId);
+        comment1.setUserid(userId);
         commentService.saveComment(comment1);
         return ResultUtil.success(0);
     }
@@ -42,7 +41,7 @@ public class CommentController extends BaseController {
         List<Comment> commentList = commentService.findCommentByProductId(productid);
         List<CommentResponse> responseList = new ArrayList<>();
         for (Comment comment : commentList) {
-            Integer userId = comment.getUser_id();
+            Integer userId = comment.getUserid();
             String user = userService.findNameById(userId);
             CommentResponse response = new CommentResponse();
             response.setContent(comment.getContent());

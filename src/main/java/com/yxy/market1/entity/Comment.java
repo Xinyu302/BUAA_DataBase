@@ -10,13 +10,13 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
-    private Integer comment_id;
+    private Integer commentid;
 
     @Column(name = "user_id")
-    private Integer user_id;
+    private Integer userid;
 
-    @Column(name = "product_id")
-    private Integer product_id;
+    @Column(name = "productid")
+    private Integer productid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
@@ -27,28 +27,28 @@ public class Comment {
     public Comment() {
     }
 
-    public Integer getComment_id() {
-        return comment_id;
+    public Integer getCommentid() {
+        return commentid;
     }
 
-    public void setComment_id(Integer comment_id) {
-        this.comment_id = comment_id;
+    public void setCommentid(Integer comment_id) {
+        this.commentid = comment_id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserid(Integer user_id) {
+        this.userid = user_id;
     }
 
-    public Integer getProduct_id() {
-        return product_id;
+    public Integer getProductid() {
+        return productid;
     }
 
-    public void setProduct_id(Integer product_id) {
-        this.product_id = product_id;
+    public void setProductid(Integer product_id) {
+        this.productid = product_id;
     }
 
     public Date getTime() {

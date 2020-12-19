@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface CommentMapper extends JpaRepository<Comment,Integer> {
     @Query
-    List<Comment> findCommentsByProduct_id(Integer product_id);
+    List<Comment> findCommentsByProductid(Integer productid);
 }

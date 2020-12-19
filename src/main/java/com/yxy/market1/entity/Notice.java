@@ -12,7 +12,7 @@ public class Notice {
     private Integer id;
 
     @Column(name = "user_id")
-    private Integer user_id;
+    private Integer userid;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date time;
@@ -27,15 +27,15 @@ public class Notice {
 
     }
 
-    public Notice(Integer user_id, Date time, String content) {
-        this.user_id = user_id;
+    public Notice(Integer userid, Date time, String content) {
+        this.userid = userid;
         this.time = time;
         this.content = content;
         this.status = "未读";
     }
 
-    public Notice(Integer user_id, Date time, String content, String status) {
-        this.user_id = user_id;
+    public Notice(Integer userid, Date time, String content, String status) {
+        this.userid = userid;
         this.time = time;
         this.content = content;
         this.status = status;
@@ -49,12 +49,12 @@ public class Notice {
         this.id = id;
     }
 
-    public Integer getUser_id() {
-        return user_id;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setUser_id(Integer user_id) {
-        this.user_id = user_id;
+    public void setUserid(Integer user_id) {
+        this.userid = user_id;
     }
 
     public Date getTime() {

@@ -20,6 +20,6 @@ public class CommentService implements ICommentService {
 
     @Override
     public List<Comment> findCommentByProductId(Integer productid) {
-        return commentMapper.findCommentsByProduct_id(productid);
+        return commentMapper.findCommentsByProductid(productid);
     }
 }
