@@ -83,6 +83,9 @@ public class BuyController extends BaseController {
     @ResponseBody
     public Result<Integer> endOrder(HttpServletRequest request, Integer orderId) {
         Order order = orderService.getOrderById(orderId);
-        Integer   dsfs
+        Integer buyerId = order.getBuyerId();
+        Integer sellerId = order.getSellerId();
+
+        return ResultUtil.success(0);
     }
 }

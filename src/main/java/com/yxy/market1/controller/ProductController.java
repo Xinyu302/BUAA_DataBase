@@ -109,22 +109,14 @@ public class ProductController extends BaseController {
     @ResponseBody
     public Result<List<ProductResponce>> getProductList(HttpServletRequest request) {
         List<Product> productList = productService.findAllProduct();
-        List<ProductResponce> productResponces = new ArrayList<>();
-        for (Product p : productList) {
-            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
-        }
-        return ResultUtil.success(productResponces);
+        return getListResult(productList);
     }
 
     @PostMapping("/category_product")
     @ResponseBody
     public Result<List<ProductResponce>> getProductListByCategory(HttpServletRequest request,String category) {
         List<Product> productList = productService.findProductsByCategory(category);
-        List<ProductResponce> productResponces = new ArrayList<>();
-        for (Product p : productList) {
-            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
-        }
-        return ResultUtil.success(productResponces);
+        return getListResult(productList);
     }
 
     @PostMapping("/namelike_product")
@@ -132,10 +124,16 @@ public class ProductController extends BaseController {
     public Result<List<ProductResponce>> getProductListByNameLike(HttpServletRequest request, String namelike) {
         System.out.println(namelike);
         List<Product> productList = productService.findProductByNameLike(namelike);
-        System.out.println(productList.size());
+//        System.out.println(productList.size());
+        return getListResult(productList);
+    }
+
+    private Result<List<ProductResponce>> getListResult(List<Product> productList) {
         List<ProductResponce> productResponces = new ArrayList<>();
         for (Product p : productList) {
-            productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+            if (p.getStatus().equals("已发布")) {
+                productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+            }
         }
         return ResultUtil.success(productResponces);
     }
