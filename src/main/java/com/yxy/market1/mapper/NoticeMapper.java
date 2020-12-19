@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface NoticeMapper extends JpaRepository<Notice,Integer> {
@@ -14,4 +15,7 @@ public interface NoticeMapper extends JpaRepository<Notice,Integer> {
     @Query("update Notice n set n.status=?2 where n.id=?1")
     @Transactional
     void updateStatusById(Integer id,String status);
+
+    @Query
+    List<Notice> findNoticesByUser_id(Integer user_id);
 }

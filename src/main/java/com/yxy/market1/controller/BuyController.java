@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -34,7 +35,7 @@ public class BuyController extends BaseController {
 
     @PostMapping("/getseller")
     @ResponseBody
-    public Result<SellerResponse> getSellerId(HttpServletRequest request,Integer productId) {
+    public Result<SellerResponse> getSellerId(HttpServletRequest request, Integer productId) {
         User user;
         Integer sellerId = productService.findSellerIdById(productId);
         Optional<User> userById = userService.findUserById(sellerId);
@@ -49,7 +50,7 @@ public class BuyController extends BaseController {
 
     @PostMapping("/buyproduct")
     @ResponseBody
-    public Result<Integer> buyProduct(HttpServletRequest request,Integer productId,Integer buyerId) {
+    public Result<Integer> buyProduct(HttpServletRequest request, Integer productId, Integer buyerId) {
         System.out.println(buyerId);
         System.out.println(productId);
         User u = userService.findUserById(buyerId).get();
@@ -66,8 +67,8 @@ public class BuyController extends BaseController {
         productService.createProduct(p);
         userService.insertUser(u);
         Date date = new Date();
-        Notice notice = new Notice(u.getUserId(),date , "购买了商品" + p.getName());
-        Notice notice1 = new Notice(p.getSellerid(), date, "您的商品"+ p.getName() + "已被用户" + u.getUsername() + "购买");
+        Notice notice = new Notice(u.getUserId(), date, "购买了商品" + p.getName());
+        Notice notice1 = new Notice(p.getSellerid(), date, "您的商品" + p.getName() + "已被用户" + u.getUsername() + "购买");
         noticeService.addNotice(notice);
         noticeService.addNotice(notice1);
         Order order = new Order();
@@ -87,5 +88,10 @@ public class BuyController extends BaseController {
         Integer sellerId = order.getSellerId();
 
         return ResultUtil.success(0);
+    }
+
+    @PostMapping("/get-notice")
+    public Result<List<Notice>> getNotice(HttpServletRequest request, Integer userid) {
+        return ResultUtil.success(noticeService.getNoticeByUserId(userid));
     }
 }

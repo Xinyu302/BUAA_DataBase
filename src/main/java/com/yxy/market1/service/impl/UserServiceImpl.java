@@ -125,4 +125,9 @@ public class UserServiceImpl implements IUserService {
     public Optional<User> findUserById(Integer id) {
         return mMapper.findById(id);
     }
+
+    @Override
+    public String findNameById(Integer id) {
+        return mMapper.findNameById(id);
+    }
 }

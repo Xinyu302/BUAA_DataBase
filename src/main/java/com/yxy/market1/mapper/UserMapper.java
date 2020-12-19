@@ -22,6 +22,9 @@ public interface UserMapper extends JpaRepository<User,Integer> {
     @Query(value = "select p from User p where p.username=:name")
     List<User> findUserByName(@Param("name") String name);
 
+    @Query(value = "select p.username from User p where p.id=?1")
+    String findNameById(Integer id);
+
 //    @Modifying
 //    @Query("update User p set  = true where username=:name")
 //    public void deleteByIds(@Param(value = "ids") List<String> ids);
