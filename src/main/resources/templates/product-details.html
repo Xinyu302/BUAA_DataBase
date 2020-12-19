@@ -1,4 +1,4 @@
-﻿﻿<!doctype html>
+﻿<!doctype html>
 <html class="no-js" lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -33,6 +33,8 @@
 
 <body>
 
+<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}" >
+
 <div class="main-wrapper">
     <div class="product-details-area pt-120 pb-115">
         <div class="container">
@@ -46,7 +48,7 @@
                                         <img th:src="${product.getPictureAddr()}" alt="">
                                     </a>
                                 </div>
-                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-1.jpg"><i class="icon-size-fullscreen"></i></a>
+<!--                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-1.jpg"><i class="icon-size-fullscreen"></i></a>-->
                             </div>
                             <div class="easyzoom-style">
                                 <div class="easyzoom easyzoom--overlay">
@@ -91,7 +93,7 @@
                         <h3><span th:text="${product.getDescription()}">Seamlessly predominate enterprise metrics without performance
                                 based process improvements.</span></h3>
                         <div class="pro-details-price">
-                            <li>价格:<span class="new-price" th:text="${product.getPrice()}">￥75.72</span></li>>
+                            <li>价格:<span class="new-price" th:text="${product.getPrice()}">￥75.72</span></li>
                         </div>
                         <div class="product-details-meta">
                             <ul>
@@ -103,7 +105,7 @@
                         <!--                                    <a title="Add to Cart" href="#">确认发布 </a>-->
                         <!--                                </div>-->
                         <!--                            </div>-->
-                        <button class="btn btn-success" id="id_user_login_submit" type="submit">确认发布</button>
+                        <button class="btn btn-success" id="id_user_login_submit" type="submit" data-toggle="modal" data-target="#myModal">购买</button>
                     </div>
                 </div>
 
@@ -128,7 +130,33 @@
             </div>
         </div>
     </div>
-</div>>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    取消
+                </h4>
+            </div>
+            <div class="text-center">
+                <div class="modal-body"><p>卖家联系方式:</p></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">否
+                    </button>
+                    <button type="button"  th:value="${product.getId()}" class="btn btn-primary" onclick="buy(value)">
+                        是
+                    </button>
+                </div>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <!-- All JS is here
 ============================================ -->
 
@@ -153,6 +181,42 @@
 <script src="/js/vendor/vendor.min.js"></script>
 <script src="/js/plugins/plugins.min.js"></script>  -->
 <!-- Main JS -->
+<script>
+    function buy(product_id) {
+        alert("fuck buy");
+        var userId = document.getElementById("userId").value;
+        alert(product_id);
+        // var fuck_idx = id.indexOf("-");
+        // var product_id = id.substring(fuck_idx+1);
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("productId", Number(product_id));
+        formData.append("buyerId", Number(userId));
+        $.ajax({
+            url: serverPath + "/buyproduct",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.code === 200) {
+                    alert("successfully buy");
+                    location.reload();
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function (data) {
+                alert("buy failed");
+            }
+        });
+        return false;
+    }
+</script>
 <script src="/js/main.js"></script>
 
 </body>
