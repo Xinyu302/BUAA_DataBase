@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Norda - Minimal eCommerce HTML Template</title>
-    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
@@ -29,11 +29,13 @@
     <link rel="stylesheet" href="/css/plugins/jquery-ui.css">
     <link rel="stylesheet" href="/css/style.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
 </head>
 
 <body>
 
-<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}" >
+<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
 
 <div class="main-wrapper">
     <div class="product-details-area pt-120 pb-115">
@@ -44,43 +46,11 @@
                         <div class="pro-dec-big-img-slider">
                             <div class="easyzoom-style">
                                 <div class="easyzoom easyzoom--overlay">
-                                    <a th:href="${product.getPictureAddr()}" >
+                                    <a th:href="${product.getPictureAddr()}">
                                         <img th:src="${product.getPictureAddr()}" alt="">
                                     </a>
                                 </div>
-<!--                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-1.jpg"><i class="icon-size-fullscreen"></i></a>-->
-                            </div>
-                            <div class="easyzoom-style">
-                                <div class="easyzoom easyzoom--overlay">
-                                    <a href="/images/product-details/b-large-2.jpg">
-                                        <img src="/images/product-details/large-2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-2.jpg"><i class="icon-size-fullscreen"></i></a>
-                            </div>
-                            <div class="easyzoom-style">
-                                <div class="easyzoom easyzoom--overlay">
-                                    <a href="/images/product-details/b-large-3.jpg">
-                                        <img src="/images/product-details/large-3.jpg" alt="">
-                                    </a>
-                                </div>
-                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-3.jpg"><i class="icon-size-fullscreen"></i></a>
-                            </div>
-                            <div class="easyzoom-style">
-                                <div class="easyzoom easyzoom--overlay">
-                                    <a href="/images/product-details/b-large-4.jpg">
-                                        <img src="/images/product-details/large-4.jpg" alt="">
-                                    </a>
-                                </div>
-                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-4.jpg"><i class="icon-size-fullscreen"></i></a>
-                            </div>
-                            <div class="easyzoom-style">
-                                <div class="easyzoom easyzoom--overlay">
-                                    <a href="/images/product-details/b-large-2.jpg">
-                                        <img src="/images/product-details/large-2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-2.jpg"><i class="icon-size-fullscreen"></i></a>
+                                <!--                                <a class="easyzoom-pop-up img-popup" href="/images/product-details/b-large-1.jpg"><i class="icon-size-fullscreen"></i></a>-->
                             </div>
                         </div>
                     </div>
@@ -91,13 +61,13 @@
                         <h1><span th:text="${product.getName()}">Simple Black T-Shirt</span></h1>
                         <br>
                         <h3><span th:text="${product.getDescription()}">Seamlessly predominate enterprise metrics without performance
-                                based process improvements.</span></h3>
+                                    based process improvements.</span></h3>
                         <div class="pro-details-price">
                             <li>价格:<span class="new-price" th:text="${product.getPrice()}">￥75.72</span></li>
                         </div>
                         <div class="product-details-meta">
                             <ul>
-                               <li>商品类别:<span th:text="${product.getCategory()}"></span></li>
+                                <li>商品类别:<span th:text="${product.getCategory()}"></span></li>
                             </ul>
                         </div>
                         <!--                            <div class="pro-details-action-wrap">-->
@@ -105,22 +75,23 @@
                         <!--                                    <a title="Add to Cart" href="#">确认发布 </a>-->
                         <!--                                </div>-->
                         <!--                            </div>-->
-                        <button class="btn btn-success" id="id_user_login_submit" type="submit" data-toggle="modal" data-target="#myModal">购买</button>
+                        <button class="btn btn-success" id="id_user_login_submit" th:value="${product.getId()}"
+                                type="submit" data-toggle="modal" data-target="#myModal" onclick="getseller(value)">购买
+                        </button>
                     </div>
                 </div>
 
-
-
                 <div class="get-in-touch-wrap col-lg-12">
+
                     <br><br><br>
                     <div class="contact-from contact-shadow">
-                        <form id="contact-form" action="mail-php/mail.php" method="post">
+                        <form id="commentForm">
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
-                                    <textarea name="message" placeholder="请输入评论内容......"></textarea>
+                                    <input type="text" name="content" placeholder="请输入评论内容......">
                                 </div>
                                 <div class="col-lg-12 col-md-12">
-                                    <button class="submit" type="commentsubmit">发送评论</button>
+                                    <button class="submit" type="commentsubmit" onclick="commentupload()">发送评论</button>
                                 </div>
                             </div>
                         </form>
@@ -128,8 +99,42 @@
                     </div>
                 </div>
             </div>
+
+        </div>
+        <div class="cart-main-area pt-115 pb-120">
+            <div class="container">
+                <h3 class="cart-page-title">评论</h3>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive cart-table-content">
+                                <table>
+                                    <thead>
+                                    <tr>
+                                        <th>评论人</th>
+                                        <th>内容</th>
+                                        <th>时间</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="vue_comment_display">
+                                    <tr v-for="comment_ele in comment_list">
+                                        <td class="product-thumbnail"><a href="#">{{ comment_ele.username }}</a></td>
+                                        <td class="product-price-cart"><span>{{ comment_ele.content }}</span></td>
+                                        <td class="product-price-cart">
+                                            <a :id="'comment-id-'+comment_ele.id"
+                                            ><span>{{ comment_ele.date }}</span></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -139,16 +144,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                     &times;
                 </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    取消
-                </h4>
+                <!--                <h4 class="modal-title" id="myModalLabel">-->
+                <!--                    是否要添加到购物车-->
+                <!--                </h4>-->
             </div>
             <div class="text-center">
-                <div class="modal-body"><p>卖家联系方式:</p></div>
+                <div class="modal-body"><p>商家联系方式:<span id="sellerphone"></span></p>
+                    <p>商家地址:<span id="selleraddress"></span></p></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">否
                     </button>
-                    <button type="button"  th:value="${product.getId()}" class="btn btn-primary" onclick="buy(value)">
+                    <button type="button" th:value="${product.getId()}" class="btn btn-primary" onclick="buy(value)">
                         是
                     </button>
                 </div>
@@ -182,6 +188,7 @@
 <script src="/js/plugins/plugins.min.js"></script>  -->
 <!-- Main JS -->
 <script>
+    // var sellerInfo;
     function buy(product_id) {
         alert("fuck buy");
         var userId = document.getElementById("userId").value;
@@ -216,8 +223,211 @@
         });
         return false;
     }
+
+    function getseller(product_id) {
+        alert("fuck getseller");
+        // var userId = document.getElementById("userId").value;
+        alert(product_id);
+        // var fuck_idx = id.indexOf("-");
+        // var product_id = id.substring(fuck_idx+1);
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("productId", Number(product_id));
+        // formData.append("buyerId", Number(userId));
+        $.ajax({
+            url: serverPath + "/getseller",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.code === 200) {
+                    alert("successfully getseller");
+                    // sellerInfo = res.data;
+                    document.getElementById("sellerphone").innerHTML = res.data.phone
+                    document.getElementById("selleraddress").innerHTML = res.data.address
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function (data) {
+                alert("getseller failed");
+            }
+        });
+        return false;
+    }
+
+    function commentupload() {
+        // if ($("#photoFile").val() == '') {
+        //     return;
+        // }
+        var userId = document.getElementById("userId").value;
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var serverPath = urlPath.substring(0, index);
+        var index_productid = urlPath.lastIndexOf('/');
+
+        var index_proid_end = urlPath.indexOf('?');
+        var productId;
+        if (index_proid_end === -1) {
+            productId = urlPath.substring(index_productid + 1);
+        } else {
+            productId = urlPath.substring(index_productid + 1, index_proid_end);
+        }
+        alert(productId);
+        var form = document.getElementById('commentForm'),
+            formData = new FormData(form);
+        alert(formData);
+        formData.append("userId", Number(userId));
+        formData.append("productId", Number(productId));
+        $.ajax({
+            url: serverPath + "/add-comment",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.code === 200) {
+                    location.reload();
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function (data) {
+                alert("comment failed");
+            }
+        });
+        return false;
+    }
+
+    // function setcomment(product_id) {
+    //     alert("fuck set comment");
+    //     // var userId = document.getElementById("userId").value;
+    //     alert(product_id);
+    //     // var fuck_idx = id.indexOf("-");
+    //     // var product_id = id.substring(fuck_idx+1);
+    //     var urlPath = window.document.location.href;
+    //     var docPath = window.document.location.pathname;
+    //     var index = urlPath.indexOf(docPath);
+    //     var serverPath = urlPath.substring(0, index);
+    //     var formData = new FormData();
+    //     formData.append("productid", Number(product_id));
+    //     // formData.append("buyerId", Number(userId));
+    //     $.ajax({
+    //         url: serverPath + "/get-comment",
+    //         type: "post",
+    //         data: formData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (res) {
+    //             if (res.code === 200) {
+    //                 alert("successfully buy");
+    //                 location.reload();
+    //                 // window.location.href="/product-details/" + res.data;
+    //             } else {
+    //                 alert(res.msg);
+    //             }
+    //         },
+    //         error: function (data) {
+    //             alert("buy failed");
+    //         }
+    //     });
+    //     return false;
+    // }
+
+    // function getcomment(product_id) {
+    //     alert("fuck getseller");
+    //     // var userId = document.getElementById("userId").value;
+    //     alert(product_id);
+    //     // var fuck_idx = id.indexOf("-");
+    //     // var product_id = id.substring(fuck_idx+1);
+    //     var urlPath = window.document.location.href;
+    //     var docPath = window.document.location.pathname;
+    //     var index = urlPath.indexOf(docPath);
+    //     var serverPath = urlPath.substring(0, index);
+    //     var formData = new FormData();
+    //     formData.append("productId", Number(product_id));
+    //     // formData.append("buyerId", Number(userId));
+    //     $.ajax({
+    //         url: serverPath + "/getseller",
+    //         type: "post",
+    //         data: formData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (res) {
+    //             if (res.code === 200) {
+    //                 alert("successfully getseller");
+    //                 // sellerInfo = res.data;
+    //                 document.getElementById("sellerphone").innerHTML = res.data.phone
+    //                 document.getElementById("selleraddress").innerHTML = res.data.address
+    //                 // window.location.href="/product-details/" + res.data;
+    //             } else {
+    //                 alert(res.msg);
+    //             }
+    //         },
+    //         error: function (data) {
+    //             alert("getseller failed");
+    //         }
+    //     });
+    //     return false;
+    // }
+
+    window.onload = function () {
+        // var userId = document.getElementById("userId").value;
+        var urlPath = window.document.location.href;
+        var docPath = window.document.location.pathname;
+        var index = urlPath.indexOf(docPath);
+        var index_productid = urlPath.lastIndexOf('/');
+        var index_proid_end = urlPath.indexOf('?');
+        var productId;
+        if (index_proid_end === -1) {
+            productId = urlPath.substring(index_productid + 1);
+        } else {
+            productId = urlPath.substring(index_productid + 1, index_proid_end);
+        }
+        var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        alert(productId);
+        formData.append("productid", Number(productId));
+        // alert(Number(userId));
+        // alert(serverPath);
+        $.ajax({
+            url: serverPath + "/get-comment",
+            type: "post",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                if (res.code === 200) {
+                    alert("nb");
+                    // alert(res.data);
+                    var vm = new Vue({
+                        el: '#vue_comment_display',
+                        data: {
+                            comment_list: res.data
+                        },
+                    });
+                    alert("fuck");
+                    alert(res.data[0].username);
+                    alert(comment_list[0].username);
+                    // window.location.href="/product-details/" + res.data;
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function (data) {
+                alert("comment load failed");
+            }
+        });
+        return false;
+    }
 </script>
-<script src="/js/main.js"></script>
+<!--<script src="/js/main.js"></script>-->
 
 </body>
 

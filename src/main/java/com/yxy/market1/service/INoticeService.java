@@ -11,4 +11,6 @@ public interface INoticeService {
     void changeNoticeStatus(Integer noticeid,String status);
 
     List<Notice> getNoticeByUserId(Integer userid);
+
+    Integer findNoticeNum(Integer userid);
 }

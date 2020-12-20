@@ -5,7 +5,7 @@ import com.yxy.market1.controller.base.BaseController;
 import com.yxy.market1.entity.Favorite;
 import com.yxy.market1.entity.Product;
 import com.yxy.market1.entity.dto.form.FavoriteForm;
-import com.yxy.market1.entity.dto.response.ProductResponce;
+import com.yxy.market1.entity.dto.response.ProductResponse;
 import com.yxy.market1.entity.dto.response.Result;
 import com.yxy.market1.service.IFavoriteService;
 import com.yxy.market1.service.IProductService;
@@ -15,8 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,15 +42,15 @@ public class FavoriteController extends BaseController {
 
     @PostMapping("get-cart")
     @ResponseBody
-    public Result<List<ProductResponce>> getFavorites(HttpServletRequest request,Integer userId) {
+    public Result<List<ProductResponse>> getFavorites(HttpServletRequest request, Integer userId) {
         System.out.println(userId);
         List<Integer> product = fService.findProductIdByUserId(userId);
         System.out.println(product);
         List<Product> products = pService.findProductByIdIn(product);
         System.out.println(products);
-        List<ProductResponce> responces = new ArrayList<>();
+        List<ProductResponse> responces = new ArrayList<>();
         for (Product p : products) {
-            responces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+            responces.add(new ProductResponse(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
         }
         return ResultUtil.success(responces);
     }

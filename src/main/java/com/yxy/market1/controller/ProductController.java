@@ -5,7 +5,7 @@ import com.yxy.market1.controller.base.BaseController;
 import com.yxy.market1.entity.Notice;
 import com.yxy.market1.entity.Product;
 import com.yxy.market1.entity.dto.form.ProductForm;
-import com.yxy.market1.entity.dto.response.ProductResponce;
+import com.yxy.market1.entity.dto.response.ProductResponse;
 import com.yxy.market1.entity.dto.response.Result;
 import com.yxy.market1.service.INoticeService;
 import com.yxy.market1.service.IProductService;
@@ -24,9 +24,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static com.yxy.market1.consts.ViewConsts.VIEW_LABEL;
-import static com.yxy.market1.consts.ViewConsts.VIEW_MSG;
 
 @Controller
 public class ProductController extends BaseController {
@@ -107,35 +104,35 @@ public class ProductController extends BaseController {
 
     @PostMapping("/display_goods")
     @ResponseBody
-    public Result<List<ProductResponce>> getProductList(HttpServletRequest request) {
+    public Result<List<ProductResponse>> getProductList(HttpServletRequest request) {
         List<Product> productList = productService.findAllProduct();
         return getListResult(productList);
     }
 
     @PostMapping("/category_product")
     @ResponseBody
-    public Result<List<ProductResponce>> getProductListByCategory(HttpServletRequest request,String category) {
+    public Result<List<ProductResponse>> getProductListByCategory(HttpServletRequest request, String category) {
         List<Product> productList = productService.findProductsByCategory(category);
         return getListResult(productList);
     }
 
     @PostMapping("/namelike_product")
     @ResponseBody
-    public Result<List<ProductResponce>> getProductListByNameLike(HttpServletRequest request, String namelike) {
+    public Result<List<ProductResponse>> getProductListByNameLike(HttpServletRequest request, String namelike) {
         System.out.println(namelike);
         List<Product> productList = productService.findProductByNameLike(namelike);
 //        System.out.println(productList.size());
         return getListResult(productList);
     }
 
-    private Result<List<ProductResponce>> getListResult(List<Product> productList) {
-        List<ProductResponce> productResponces = new ArrayList<>();
+    private Result<List<ProductResponse>> getListResult(List<Product> productList) {
+        List<ProductResponse> productResponses = new ArrayList<>();
         for (Product p : productList) {
             if (p.getStatus().equals("已发布")) {
-                productResponces.add(new ProductResponce(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
+                productResponses.add(new ProductResponse(p.getId(), p.getName(), p.getPrice(), p.getPictureAddr()));
             }
         }
-        return ResultUtil.success(productResponces);
+        return ResultUtil.success(productResponses);
     }
 
 //    @PostMapping("/userlogin.f")

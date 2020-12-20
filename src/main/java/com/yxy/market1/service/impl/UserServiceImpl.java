@@ -30,6 +30,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User loginAuthentication(UserLoginForm loginForm) {
         List<User> userList = mMapper.findUserByNameAndPassword(loginForm.getUsername(),DigestUtils.md2Hex(loginForm.getPassword()));
+        System.out.println(DigestUtils.md2Hex(loginForm.getPassword()));
         if (userList != null && userList.size() == 1) {
             return userList.get(0);
         }
@@ -47,6 +48,11 @@ public class UserServiceImpl implements IUserService {
     public void insertUser(User user) {
         String pwdStr = user.getPassword();
         user.setPassword(DigestUtils.md2Hex(pwdStr));
+        mMapper.save(user);
+    }
+
+    @Override
+    public void changeUser(User user) {
         mMapper.save(user);
     }
 
@@ -107,8 +113,6 @@ public class UserServiceImpl implements IUserService {
                     password = cookie.getValue();
                 }
             }
-//            System.out.println(username);
-//            System.out.println(password);
             if (username.length() > 0 && password.length() > 0) {
                 System.out.println("in here");;
                 UserLoginForm loginForm = new UserLoginForm();

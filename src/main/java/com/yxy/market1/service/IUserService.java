@@ -30,6 +30,8 @@ public interface IUserService {
 
     void insertUser(User user);
 
+    void changeUser(User user);
+
     void joinSession(HttpServletRequest request,User user);
 
     User getUserSession(HttpServletRequest request);

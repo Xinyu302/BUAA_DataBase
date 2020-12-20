@@ -90,5 +90,11 @@ public class FrontController extends BaseController {
     public String jumpOrder() {
         return "order";
     }
+
+
+    @GetMapping("/notice")
+    public String noticeHtml(HttpServletRequest request) {
+        return "notice";
+    }
 }
 

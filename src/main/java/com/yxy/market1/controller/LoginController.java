@@ -48,7 +48,7 @@ public class LoginController extends BaseController {
         }
         User user = mUserService.loginAuthentication(loginForm);
         if (null != user) {
-//            System.out.println("login now");
+            System.out.println("login now");
             mUserService.joinSession(request, user);
             Cookie usercookie = new Cookie(COOKIE_USERNAME, loginForm.getUsername());
             usercookie.setMaxAge(24 * 60 * 60);

@@ -1,4 +1,5 @@
 ﻿<!doctype html>
+<!doctype html>
 <html class="no-js" lang="en">
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -96,7 +97,7 @@
     </header>
     <div class="cart-main-area pt-115 pb-120">
         <div class="container">
-            <h3 class="cart-page-title">您的购物车</h3>
+            <h3 class="cart-page-title">您的通知</h3>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <form action="#">
@@ -104,42 +105,41 @@
                             <table>
                                 <thead>
                                 <tr>
-                                    <th>图片</th>
-                                    <th>商品名称</th>
-                                    <th>价格</th>
-                                    <th></th>
+                                    <th>时间</th>
+                                    <th>内容</th>
+                                    <th>状态</th>
                                 </tr>
                                 </thead>
-                                <tbody id="vue_carts_display">
-                                <tr v-for="item in cart_list">
-                                    <td class="product-thumbnail ">
-                                        <a :href="'/product-details/'+item.id">
-                                            <img :src="item.photo_address" class="img-responsive center-block" alt="">
-                                        </a>
-                                    </td>
-                                    <td class="product-name"><a :href="'/product-details/'+item.id">{{ item.good_name
+                                <tbody id="vue_notice_display">
+                                <tr v-for="notice_ele in notice_list">
+                                    <td class="product-thumbnail"><a href="#">{{ notice_ele.time2 }} {{ notice_ele.time1
                                         }}</a></td>
-                                    <td class="product-price-cart"><span class="amount">￥{{ item.price }}</span></td>
-                                    <td class="product-remove">
-                                        <a :id="'fuck-'+item.id" class="display" onclick="delete_one_cart(id)"><i class="icon_close"></i></a>
+                                    <!--                                    <td class="product-thumbnail"><a href="#">1</a></td>-->
+                                    <!--                                    <td class="product-price-cart"><span>2</span></td>-->
+                                    <!--                                    <td class="product-remove">-->
+                                    <!--                                        <a :id="'notice-status-'+notice_ele.id" onclick=""><span>3</span></a>-->
+                                    <td class="product-price-cart"><span>{{ notice_ele.content }}</span></td>
+                                    <td class="product-price-cart">
+                                        <a :id="'noticestatus-'+notice_ele.id"
+                                           onclick="change_states(id)"><span>{{ notice_ele.status }}</span></a>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="cart-shiping-update-wrapper">
-                                    <div class="cart-shiping-update">
-                                        <a href="#">Continue Shopping</a>
-                                    </div>
-                                    <div class="cart-clear">
-                                        <button onclick="delete_all_cart()">Delete All</button>
-                                        <a href="#">Clear Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <!--                        <div class="row">-->
+                        <!--                            <div class="col-lg-12">-->
+                        <!--                                <div class="cart-shiping-update-wrapper">-->
+                        <!--                                    <div class="cart-shiping-update">-->
+                        <!--                                        <a href="#">Continue Shopping</a>-->
+                        <!--                                    </div>-->
+                        <!--                                    <div class="cart-clear">-->
+                        <!--                                        <button onclick="delete_all_cart()">Delete All</button>-->
+                        <!--                                        <a href="#">Clear Cart</a>-->
+                        <!--                                    </div>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                        </div>-->
                     </form>
                 </div>
             </div>
@@ -231,35 +231,68 @@
 
 
 <script>
-    function delete_one_cart(id) {
-        var userId = document.getElementById("userId").value;
-        alert(id);
-        var fuck_idx = id.indexOf("-");
-        var product_id = id.substring(fuck_idx+1);
+    // function get_notice() {
+    //     var userId = document.getElementById("userId").value;
+    //     // alert(id);
+    //     // var fuck_idx = id.indexOf("-");
+    //     // var product_id = id.substring(fuck_idx+1);
+    //     var urlPath = window.document.location.href;
+    //     var docPath = window.document.location.pathname;
+    //     var index = urlPath.indexOf(docPath);
+    //     var serverPath = urlPath.substring(0, index);
+    //     var formData = new FormData();
+    //     formData.append("userId", Number(userId));
+    //     // formData.append("productId", Number(product_id));
+    //     $.ajax({
+    //         url: serverPath + "/get-notice",
+    //         type: "post",
+    //         data: formData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (res) {
+    //             if (res.code === 200) {
+    //                 alert("successfly delete this one");
+    //                 location.reload();
+    //                 // window.location.href="/product-details/" + res.data;
+    //             } else {
+    //                 alert(res.msg);
+    //             }
+    //         },
+    //         error: function (data) {
+    //             alert("delete this good failed");
+    //         }
+    //     });
+    //     return false;
+    // }
+    function change_states(noticeid) {
+        var fuck_idx = noticeid.indexOf("-");
+        var idd = noticeid.substring(fuck_idx+1);
+        alert(idd);
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
-        formData.append("userId", Number(userId));
-        formData.append("productId", Number(product_id));
+        formData.append("id", Number(idd));
         $.ajax({
-            url: serverPath + "/delete-one-cart",
+            url: serverPath + "/change-notice",
             type: "post",
             data: formData,
             contentType: false,
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("successfly delete this one");
-                    location.reload();
+                    var a = document.getElementById(noticeid);
+                    a.firstChild.innerHTML = "已读";
+                    alert("successfly change");
+                    // location.reload();
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);
                 }
             },
             error: function (data) {
-                alert("delete this good failed");
+                alert("change notice state failed");
             }
         });
         return false;
@@ -299,28 +332,29 @@
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function () {
         var userId = document.getElementById("userId").value;
+        // alert(userId)
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
-        formData.append("userId", Number(userId));
-        // alert(Number(userId));
-        // alert(serverPath);
+        formData.append("userid", Number(userId));
+        alert(Number(userId));
+        alert(serverPath);
         $.ajax({
-            url: serverPath + "/get-cart",
+            url: serverPath + "/get-notice",
             type: "post",
             data: formData,
             contentType: false,
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    // alert("nb");
+                    alert("nb");
                     // alert(res.data);
                     var vm = new Vue({
-                        el: '#vue_carts_display',
+                        el: '#vue_notice_display',
                         data: {
-                            cart_list: res.data
+                            notice_list: res.data
                         },
                     });
                     // alert(cart_list[0].good_name);
@@ -330,7 +364,7 @@
                 }
             },
             error: function (data) {
-                alert("商品加载失败");
+                alert("notice load failed");
             }
         });
         return false;

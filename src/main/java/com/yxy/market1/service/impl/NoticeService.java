@@ -27,4 +27,10 @@ public class NoticeService implements INoticeService {
     public List<Notice> getNoticeByUserId(Integer userid) {
         return nMapper.findNoticesByUserid(userid);
     }
+
+    @Override
+    public Integer findNoticeNum(Integer userid) {
+        return nMapper.countByUseridAndStatus(userid, "未读");
+
+    }
 }
