@@ -101,5 +101,10 @@ public class FrontController extends BaseController {
     public String getAdmin(HttpServletRequest request) {
         return "admini";
     }
+
+    @GetMapping("/chart")
+    public String getChart(HttpServletRequest request) {
+        return "chart";
+    }
 }
 

@@ -5589,10 +5589,11 @@ textarea:focus {
 }
 
 .hero-slider-pt-1 {
-    padding-top: 150px;
+    padding-top: 0px;
+    /* padding-top: 150px; */
 }
 
-@media only screen and (min-width: 768px) and (max-width: 991px) {
+/* @media only screen and (min-width: 768px) and (max-width: 991px) {
     .hero-slider-pt-1 {
         padding-top: 100px;
     }
@@ -5608,7 +5609,7 @@ textarea:focus {
     .hero-slider-pt-1 {
         padding-top: 90px;
     }
-}
+} */
 
 .hero-slider-content-1-pt-1 {
     padding-top: 125px;
@@ -6720,7 +6721,7 @@ textarea:focus {
 
 .slider-area .nav-style-2 > span {
     position: absolute;
-    top: 50%;
+    top: 10%;
     -webkit-transform: translateY(-50%) scale(0);
     -ms-transform: translateY(-50%) scale(0);
     transform: translateY(-50%) scale(0);
