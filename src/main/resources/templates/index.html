@@ -34,7 +34,7 @@
 
 <body>
 
-<input th:if="${session.session_current_user}" type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
+    <input th:if="${session.session_current_user}" type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
 
 <div class="main-wrapper">
     <header class="header-area sticky-bar bg-top section-padding-1">
@@ -42,49 +42,44 @@
             <div class="header-large-device">
                 <div class="header-bottom">
                     <div class="row align-items-center">
-                        <div class="col-xl-3 col-lg-3">
+                        <div class="col-2">
                             <div class="logo">
-                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
+                                <a href="/index"><img src="/images/logo/logo.png" alt="logo"></a>
                             </div>
                         </div>
-                        <div class="col-xl-7 col-lg-7">
+                        <div class="col-4">
                             <div class="main-menu main-menu-padding-1 main-menu-lh-1">
                                 <nav>
                                     <ul>
-                                        <li><a href="index">主页</a></li>
-                                        <li><a href="shop">购物</a></li>
-                                        <li><a href="release">发布</a></li>
+                                        <li><a href="/index">主页</a></li>
+                                        <li><a href="/shop">购物</a></li>
+                                        <li><a href="/release">发布</a></li>
+                                        <li><a href="/my-account">个人信息</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-2 col-lg-2">
+                        <div class="col-4">
+                            <!-- <div class="main-menu main-menu-padding-1 main-menu-lh-1 " style="float: right"> -->
+                                <nav style="overflow: hidden; float: right; padding-top: 6px;">
+                                    <ul>
+                                        <li style="font-size:175%;" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
+                                        <li style="font-size:175%;" th:unless="${session.session_current_user}">您好，您尚未登录</li>
+                                        <li th:if="${session.session_current_user}" style="padding-top: 5px; float: right;">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
+                                    </ul>
+                                </nav>
+                            <!-- </div> -->
+                        </div>
+                        <div class="col-2">
                             <div class="header-action header-action-flex header-action-mrg-right">
-                                <div class="same-style-2 header-search-1">
-                                    <a class="search-toggle" href="#">
-                                        <i class="icon-magnifier s-open"></i>
-                                        <i class="icon_close s-close"></i>
-                                    </a>
-                                    <div class="search-wrap-1">
-                                        <form action="#">
-                                            <label>
-                                                <input placeholder="Search products…" type="text">
-                                            </label>
-                                            <button class="button-search"><i class="icon-magnifier"></i></button>
-                                        </form>
-                                    </div>
+                                <div class="same-style-2">
+                                    <a href="/notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
                                 </div>
                                 <div class="same-style-2">
-                                    <a href="my-account"><i class="icon-user"></i></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="notice"><i class="icon-heart"></i><span class="pro-count red" id="noticenum"></span></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="userlogin"><i class="icon-user"></i></a>
+                                    <a href="/userlogin"><i class="icon-user"></i></a>
                                 </div>
                                 <div class="same-style-2 header-cart">
-                                    <a href="cart">
+                                    <a href="/cart">
                                         <i class="icon-basket-loaded"></i>
                                     </a>
                                 </div>
@@ -108,7 +103,7 @@
                                 <p class="animated">Discover our collection with leather simple backpacks. Less is more
                                     never out trend.</p>
                                 <div class="btn-style-1">
-                                    <a class="animated btn-1-padding-1" href="product-details.html">Explore Now</a>
+                                    <a class="animated btn-1-padding-1" href="/product-details.html">Explore Now</a>
                                 </div>
                             </div>
                         </div>
@@ -130,7 +125,7 @@
                                 <p class="animated">Discover our collection with leather simple backpacks. Less is more
                                     never out trend.</p>
                                 <div class="btn-style-1">
-                                    <a class="animated btn-1-padding-1" href="product-details.html">Explore Now</a>
+                                    <a class="animated btn-1-padding-1" href="/product-details.html">Explore Now</a>
                                 </div>
                             </div>
                         </div>
@@ -147,16 +142,16 @@
     <div class="banner-area pb-85">
         <div class="container">
             <div class="section-title mb-45">
-                <h2>Our Collections</h2>
+                <h2></h2>
             </div>
             <div class="row">
                 <div class="col-lg-7 col-md-7">
                     <div class="banner-wrap banner-mr-1 mb-30">
                         <div id="enterMall" class="banner-img banner-img-zoom">
-                            <a href="/shop"><img src="images/banner/banner-1.jpg" alt=""></a>
+                            <a href="/shop"><img src="images/shop/shop1.jpg" alt=""></a>
                         </div>
                         <div class="banner-content-1">
-                            <h2>进入商城 <br>Underwear</h2>
+                            <h1 style="font-size:250%; color:rgba(120, 236, 198, 0.877)">进入商城</h1>
                             <p>Stretch, fresh-cool help you alway comfortable</p>
                         </div>
                     </div>
@@ -164,10 +159,10 @@
                 <div class="col-lg-5 col-md-5">
                     <div id="enterRelease" class="banner-wrap  banner-ml-1 mb-30">
                         <div class="banner-img banner-img-zoom">
-                            <a href="/release"><img src="images/banner/banner-2.jpg" alt=""></a>
+                            <a href="/release"><img src="images/shop/shop2.jpg" alt=""></a>
                         </div>
                         <div class="banner-content-2">
-                            <h2>发布商品</h2>
+                            <h1 style="font-size:250%; color:rgb(250, 246, 192)">发布商品</h1>
                             <p>Minimalist never cool, choose and make the simple great again!</p>
                         </div>
                     </div>
@@ -175,10 +170,18 @@
             </div>
         </div>
     </div>
-    <div class="subscribe-area bg-gray pt-115 pb-115">
-        <div><a href="/admini">guanli</a></div>
+    <div class="subscribe-area bg-gray pt-40 pb-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-title">
+                        <h2 style="text-align: center"><a href="/admini">管理商城</a></h2>
+                        <p style="text-align: center"><a href="/contact">联系我们</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 
 </div>
 
@@ -201,42 +204,12 @@
 <script src="js/plugins/easyzoom.js"></script>
 <script src="js/plugins/scrollup.js"></script>
 <script src="js/plugins/ajax-mail.js"></script>
-
-<!-- Use the minified version files listed below for better performance and remove the files listed above
-<script src="js/vendor/vendor.min.js"></script>
-<script src="js/plugins/plugins.min.js"></script>  -->
-<!-- Main JS -->
+<script src="js/noticeNum.js"></script>
 
 <script>
     window.onload = function () {
         // alert("notice num display");
-        var userId = document.getElementById("userId").value;
-        if (userId == null) return;
-        var urlPath = window.document.location.href;
-        var docPath = window.document.location.pathname;
-        var index = urlPath.indexOf(docPath);
-        var serverPath = urlPath.substring(0, index);
-        var formData = new FormData();
-        formData.append("userid", Number(userId));
-        $.ajax({
-            url: serverPath + "/get-notice-num",
-            type: "post",
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (res) {
-                if (res.code === 200) {
-                    // sellerInfo = res.data;
-                    document.getElementById("noticenum").innerHTML = res.data
-                } else {
-                    alert(res.msg);
-                }
-            },
-            error: function (data) {
-                alert("getseller failed");
-            }
-        });
-        return false;
+        noticeNum();
     }
 </script>
 <script src="js/main.js"></script>

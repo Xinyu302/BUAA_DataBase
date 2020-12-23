@@ -1,6 +1,7 @@
 package com.yxy.market1.entity;
 
 import javax.persistence.*;
+import java.text.Format;
 
 @Entity
 @Table(name = "User")
@@ -104,5 +105,9 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getMoneyString() {
+        return String.format("%.2f", money);
     }
 }

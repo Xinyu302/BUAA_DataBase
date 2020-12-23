@@ -1,6 +1,6 @@
 $(function () {
     $("#id_user_login_submit").bind("click", function () {
-        var loginForm = document.forms[1];
+        var loginForm = document.forms["loginForm"];
         loginForm.action = "userlogin.f";
         loginForm.method = "post";
         loginForm.submit();
@@ -9,7 +9,7 @@ $(function () {
 
 $(function () {
     $("#id_user_register_submit").bind("click", function () {
-        var registerForm = document.forms[2];
+        var registerForm = document.forms["registerForm"];
         registerForm.action = "userregister.f";
         registerForm.method = "post";
         registerForm.submit();

@@ -106,5 +106,10 @@ public class FrontController extends BaseController {
     public String getChart(HttpServletRequest request) {
         return "chart";
     }
+
+    @GetMapping("/contact")
+    public String getContact(HttpServletRequest request) {
+        return "contact";
+    }
 }
 
