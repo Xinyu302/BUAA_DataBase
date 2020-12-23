@@ -34,7 +34,7 @@
 
 <body>
 
-<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
+<input th:if="${session.session_current_user}" type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
 
 <div class="main-wrapper">
     <header class="header-area sticky-bar bg-top section-padding-1">
@@ -101,7 +101,7 @@
             <div class="single-hero-slider single-animation-wrap">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-5 col-md-5 col-sm-5">
                             <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
                                 <h4 class="animated">New Arrivals</h4>
                                 <h1 class="animated">Leather Simple <br>Backpacks</h1>
@@ -112,9 +112,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-7 col-md-7 col-sm-7">
                             <div class="hero-slider-img-1 slider-animated-1">
-                                <img class="animated" src="images/slider/hm-1-slider-1.png" alt="">
+                                <img class="animated" src="images/slider/newyear.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
             <div class="single-hero-slider single-animation-wrap">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-5 col-md-5 col-sm-5">
                             <div class="hero-slider-content-1 hero-slider-content-1-pt-1 slider-animated-1">
                                 <h4 class="animated">New Arrivals</h4>
                                 <h1 class="animated">Leather Simple <br>Backpacks</h1>
@@ -134,61 +134,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="col-lg-7 col-md-7 col-sm-7">
                             <div class="hero-slider-img-1 slider-animated-1">
-                                <img class="animated" src="images/slider/hm-1-slider-1.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="service-area">
-        <div class="container">
-            <div class="service-wrap">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="single-service-wrap mb-30">
-                            <div class="service-icon">
-                                <i class="icon-cursor"></i>
-                            </div>
-                            <div class="service-content">
-                                <h3>Free Shipping</h3>
-                                <span>Orders over $100</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="single-service-wrap mb-30">
-                            <div class="service-icon">
-                                <i class="icon-reload"></i>
-                            </div>
-                            <div class="service-content">
-                                <h3>Free Returns</h3>
-                                <span>Within 30 days</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="single-service-wrap mb-30">
-                            <div class="service-icon">
-                                <i class="icon-lock"></i>
-                            </div>
-                            <div class="service-content">
-                                <h3>100% Secure</h3>
-                                <span>Payment Online</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-sm-6 col-12">
-                        <div class="single-service-wrap mb-30">
-                            <div class="service-icon">
-                                <i class="icon-tag"></i>
-                            </div>
-                            <div class="service-content">
-                                <h3>Best Price</h3>
-                                <span>Guaranteed</span>
+                                <img class="animated" src="images/slider/newyear.jpg" alt="">
                             </div>
                         </div>
                     </div>
@@ -253,36 +201,7 @@
         </div>
     </div>
     <div class="subscribe-area bg-gray pt-115 pb-115">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-5">
-                    <div class="section-title">
-                        <h2>keep connected</h2>
-                        <p>Get updates by subscribe our weekly newsletter</p>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-7">
-                    <div id="mc_embed_signup" class="subscribe-form">
-                        <form id="mc-embedded-subscribe-form" class="validate subscribe-form-style" novalidate=""
-                              target="_blank" name="mc-embedded-subscribe-form" method="post"
-                              action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
-                            <div id="mc_embed_signup_scroll" class="mc-form">
-                                <input class="email" type="email" required="" placeholder="Enter your email address"
-                                       name="EMAIL" value="">
-                                <div class="mc-news" aria-hidden="true">
-                                    <input type="text" value="" tabindex="-1"
-                                           name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef">
-                                </div>
-                                <div class="clear">
-                                    <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe"
-                                           value="Subscribe">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div><a href="/admini">guanli</a></div>
     </div>
 
 
@@ -315,8 +234,9 @@
 
 <script>
     window.onload = function () {
-        alert("notice num display");
+        // alert("notice num display");
         var userId = document.getElementById("userId").value;
+        if (userId == null) return;
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
@@ -331,8 +251,6 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("successfully get notice num");
-                    alert(res.data);
                     // sellerInfo = res.data;
                     document.getElementById("noticenum").innerHTML = res.data
                 } else {

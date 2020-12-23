@@ -102,6 +102,11 @@ public class ProductController extends BaseController {
         return "product-details";
     }
 
+    @GetMapping("/shop/{id}")
+    public String shopToGo(HttpServletRequest request,@PathVariable Integer id) {
+        return "shop-"+id;
+    }
+
     @PostMapping("/display_goods")
     @ResponseBody
     public Result<List<ProductResponse>> getProductList(HttpServletRequest request) {

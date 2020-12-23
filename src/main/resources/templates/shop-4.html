@@ -54,9 +54,9 @@
                             <div class="main-menu main-menu-padding-1 main-menu-lh-1">
                                 <nav>
                                     <ul>
-                                        <li><a href="/index">主页</a></li>
-                                        <li><a href="/shop">购物</a></li>
-                                        <li><a href="/release">发布</a></li>
+                                        <li><a href="index">主页</a></li>
+                                        <li><a href="shop">购物</a></li>
+                                        <li><a href="release">发布</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -189,8 +189,8 @@
                     <div class="shop-topbar-wrapper">
                         <div class="shop-topbar-left">
                             <div class="view-mode nav">
-                                <a class="active" href="#shoppp-1" data-toggle="tab"><i class="icon-grid"></i></a>
-                                <a href="#shoppp-2" data-toggle="tab"><i class="icon-menu"></i></a>
+                                <a class="active" href="#shop-1" data-toggle="tab"><i class="icon-grid"></i></a>
+                                <a href="#shop-2" data-toggle="tab"><i class="icon-menu"></i></a>
                             </div>
                             <p>Showing 1 - 20 of 30 results </p>
                         </div>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="shop-bottom-area">
                         <div class="tab-content jump">
-                            <div id="shoppp-1" class="tab-pane active">
+                            <div id="shop-1" class="tab-pane active">
                                 <div class="row" id="vue_goods_display">
                                     <!--                                    <div>-->
 
@@ -798,10 +798,13 @@
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
         var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("category", "电子产品");
         // alert(serverPath);
         $.ajax({
-            url:serverPath + "/display_goods",
+            url:serverPath + "/category_product",
             type:"post",
+            data:formData,
             contentType: false,
             processData: false,
             success: function(res) {
@@ -814,6 +817,7 @@
                             good_list: res.data
                         },
                     });
+                    scroll_to_goodlist();
                     alert(list[0].good_name);
                     // window.location.href="/product-details/" + res.data;
                 } else {

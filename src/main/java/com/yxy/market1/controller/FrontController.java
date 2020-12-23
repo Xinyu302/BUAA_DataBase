@@ -96,5 +96,10 @@ public class FrontController extends BaseController {
     public String noticeHtml(HttpServletRequest request) {
         return "notice";
     }
+
+    @GetMapping("/admini")
+    public String getAdmin(HttpServletRequest request) {
+        return "admini";
+    }
 }
 
