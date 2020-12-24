@@ -17,7 +17,7 @@ public interface NoticeMapper extends JpaRepository<Notice,Integer> {
     void updateStatusById(Integer id,String status);
 
     @Query
-    List<Notice> findNoticesByUserid(Integer userid);
+    List<Notice> findNoticesByUseridOrderByTimeDesc(Integer userid);
 
     @Query
     Integer countByUseridAndStatus(Integer userid,String Status);

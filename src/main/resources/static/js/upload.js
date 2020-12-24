@@ -1,7 +1,6 @@
 function uploadAndSubmit() {
     var form = document.forms["fileForm"];
     if (form["productPic"].files.length > 0) { // 寻找表单域中的 <input type="file" ... /> 标签
-        alert("begin pro");
         var file = form["productPic"].files[0]; // try sending
 
         //alert(file.content());
@@ -47,7 +46,6 @@ function uploadAndSubmit() {
         }
 
         reader.readAsText(file);
-        alert(reader.result);
     } else {
         alert ("Please choose a file.");
     }

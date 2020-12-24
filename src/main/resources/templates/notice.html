@@ -119,7 +119,7 @@
     function change_states(noticeid) {
         var fuck_idx = noticeid.indexOf("-");
         var idd = noticeid.substring(fuck_idx+1);
-        alert(idd);
+        // alert(idd);
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
@@ -190,8 +190,8 @@
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
         formData.append("userid", Number(userId));
-        alert(Number(userId));
-        alert(serverPath);
+        // alert(Number(userId));
+        // alert(serverPath);
         $.ajax({
             url: serverPath + "/get-notice",
             type: "post",
@@ -200,7 +200,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("nb");
+                    // alert("nb");
                     // alert(res.data);
                     var vm = new Vue({
                         el: '#vue_notice_display',

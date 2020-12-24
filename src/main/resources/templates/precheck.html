@@ -135,9 +135,9 @@
 <script>
     // var sellerInfo;
     function buy(product_id) {
-        alert("fuck buy");
+        // alert("fuck buy");
         var userId = document.getElementById("userId").value;
-        alert(product_id);
+        // alert(product_id);
         // var fuck_idx = id.indexOf("-");
         // var product_id = id.substring(fuck_idx+1);
         var urlPath = window.document.location.href;
@@ -155,7 +155,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("successfully buy");
+                    alert("成功购买!");
                     location.reload();
                     // window.location.href="/product-details/" + res.data;
                 } else {
@@ -170,9 +170,9 @@
     }
 
     function getseller(product_id) {
-        alert("fuck getseller");
+        // alert("fuck getseller");
         // var userId = document.getElementById("userId").value;
-        alert(product_id);
+        // alert(product_id);
         // var fuck_idx = id.indexOf("-");
         // var product_id = id.substring(fuck_idx+1);
         var urlPath = window.document.location.href;
@@ -190,7 +190,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("successfully getseller");
+                    // alert("successfully getseller");
                     // sellerInfo = res.data;
                     document.getElementById("sellerphone").innerHTML = res.data.phone
                     document.getElementById("selleraddress").innerHTML = res.data.address
@@ -224,10 +224,10 @@
         } else {
             productId = urlPath.substring(index_productid + 1, index_proid_end);
         }
-        alert(productId);
+        // alert(productId);
         var form = document.getElementById('commentForm'),
             formData = new FormData(form);
-        alert(formData);
+        // alert(formData);
         formData.append("userId", Number(userId));
         formData.append("productId", Number(productId));
         $.ajax({
@@ -338,7 +338,7 @@
         }
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
-        alert(productId);
+        // alert(productId);
         formData.append("productid", Number(productId));
         // alert(Number(userId));
         // alert(serverPath);
@@ -350,7 +350,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    alert("nb");
+                    // alert("nb");
                     // alert(res.data);
                     var vm = new Vue({
                         el: '#vue_comment_display',
@@ -358,9 +358,9 @@
                             comment_list: res.data
                         },
                     });
-                    alert("fuck");
-                    alert(res.data[0].username);
-                    alert(comment_list[0].username);
+                    // alert("fuck");
+                    // alert(res.data[0].username);
+                    // alert(comment_list[0].username);
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);

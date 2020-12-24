@@ -18,14 +18,14 @@ function upload() {
         processData: false,
         success: function(res) {
             if (res.code == 200) {
-                alert(res.data);
+                // alert(res.data);
                 window.location.href="/precheck/" + res.data;
             } else {
                 alert(res.msg);
             }
         },
-        error:function(data) {
-            alert("上传失败");
+        error:function(res) {
+            alert(res.msg);
         }
     });
     return false;

@@ -87,6 +87,7 @@ public class BuyController extends BaseController {
 //        order.setSellerId(p.getSellerid());
         orderService.createOrder(order);
         favoriteService.deleteProductByUserIdAndProductId(buyerId, productId);
+        userService.joinSession(request, u);
         return ResultUtil.success(0);
     }
 

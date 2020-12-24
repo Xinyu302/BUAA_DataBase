@@ -25,7 +25,7 @@ public class NoticeService implements INoticeService {
 
     @Override
     public List<Notice> getNoticeByUserId(Integer userid) {
-        return nMapper.findNoticesByUserid(userid);
+        return nMapper.findNoticesByUseridOrderByTimeDesc(userid);
     }
 
     @Override
