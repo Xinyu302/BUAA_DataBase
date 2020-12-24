@@ -32,12 +32,13 @@
 .classicon h3{
     margin-top: 40px;
     color: #313431;
+    font:bold;
 }
 
 .classicon h1{
     margin-top: 120px;
     color: #2f312f;
-    border-style: wave;
+    font:bold;
 }
 
 .classicon{

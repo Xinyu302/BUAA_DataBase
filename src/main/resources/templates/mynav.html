@@ -5,28 +5,28 @@
                 <div class="row align-items-center">
                     <div class="col-2">
                         <div class="logo">
-                            <a href="/index"><img src="/images/logo/logo.png" alt="logo"></a>
+                            <a href="/index"><img height="80%" width="80%" src="/images/logo/logo.png" alt="logo"></a>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         <div class="main-menu main-menu-padding-1 main-menu-lh-1">
                             <nav>
                                 <ul>
-                                    <li><a href="/index">主页</a></li>
-                                    <li><a href="/shop">购物</a></li>
-                                    <li><a href="/release">发布</a></li>
-                                    <li><a href="/my-account">个人信息</a></li>
+                                    <li><a style="font-size: 125%;" href="/index">主页</a></li>
+                                    <li><a style="font-size: 125%;" href="/shop">购物</a></li>
+                                    <li><a style="font-size: 125%;" href="/release">发布</a></li>
+                                    <li><a style="font-size: 125%;" href="/my-account">个人信息</a></li>
                                 </ul>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <!-- <div class="main-menu main-menu-padding-1 main-menu-lh-1 " style="float: right"> -->
                             <nav style="overflow: hidden; float: right; padding-top: 6px;">
                                 <ul>
-                                    <li style="font-size:150%;" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                    <li style="font-size:150%;" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                    <li th:if="${session.session_current_user}" style="padding-top: 5px; float: right;">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
+                                    <li style="font-size:150%; font-weight: bold;" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
+                                    <li style="font-size:150%; font-weight: bold;" th:unless="${session.session_current_user}">您好，您尚未登录</li>
+                                    <li style="padding-top: 5px; float: right;" th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
                                 </ul>
                             </nav>
                         <!-- </div> -->

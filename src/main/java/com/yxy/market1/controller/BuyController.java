@@ -47,6 +47,11 @@ public class BuyController extends BaseController {
         } else {
             return ResultUtil.fail("there is no such seller");
         }
+        Product p = productService.findProductById(productId);
+        Double money = p.getPrice();
+        if (money > user.getMoney()) {
+            return ResultUtil.fail("你没有这么多钱，哭哭");
+        }
         SellerResponse response = new SellerResponse(user.getPhone(), user.getAddress(), user.getUserId());
         return ResultUtil.success(response);
     }
@@ -54,8 +59,8 @@ public class BuyController extends BaseController {
     @PostMapping("/buyproduct")
     @ResponseBody
     public Result<Integer> buyProduct(HttpServletRequest request, Integer productId, Integer buyerId) {
-        System.out.println(buyerId);
-        System.out.println(productId);
+        // System.out.println(buyerId);
+        // System.out.println(productId);
         User u = userService.findUserById(buyerId).get();
         Product p = productService.findProductById(productId);
         Double money = p.getPrice();

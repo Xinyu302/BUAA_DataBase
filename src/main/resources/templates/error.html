@@ -1,0 +1,33 @@
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>出错啦</title>
+
+</head>
+
+<body>
+
+<!--<#&#45;&#45; s-nav.ftl &ndash;&gt;-->
+<!--<#include "public/nav.ftl">-->
+<!--<#&#45;&#45; e-nav.ftl &ndash;&gt;-->
+
+<!--<div th:include="public/nav.html"></div>-->
+<!--<div th:include="css/bootstrap.css"></div>-->
+<section class="py-3">
+    <div class="container">
+        <img  class="-align-center" src="/images/404.png" alt="" style="width:80%;">
+        <h2 class="m-3 text-center" text-align="center" ><span th:if="${msg}" th:text="${msg}"></span>服务器需要冷静一下</h2>
+        <h3 class="text-center" text-align="center">错误代码：<span th:if="${code}" th:text="${code}"></span>!未知错误</h3>
+    </div>
+</section>
+
+
+
+</body>
+</html>

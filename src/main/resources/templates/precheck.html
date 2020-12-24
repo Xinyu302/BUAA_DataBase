@@ -38,62 +38,14 @@
 
 
 <div class="main-wrapper">
-    <header class="header-area sticky-bar bg-top section-padding-1">
-        <div class="container-fluid">
-            <div class="header-large-device">
-                <div class="header-bottom">
-                    <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="main-menu main-menu-padding-1 main-menu-lh-1">
-                                <nav>
-                                    <ul>
-                                        <li><a href="/index">主页</a></li>
-                                        <li><a href="/shop">购物</a></li>
-                                        <li><a href="/release">发布</a></li>
-                                        <li><a href="/my-account">个人信息</a></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                            <li>
-<!--                                                <div>-->
-                                                    <li style="font-size:200%" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                                    <li style="font-size:200%" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                                    <li th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
-<!--                                                </div>-->
-                                            </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="header-action header-action-flex header-action-mrg-right">
-                                <div class="same-style-2">
-                                    <a href="notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="userlogin"><i class="icon-user"></i></a>
-                                </div>
-                                <div class="same-style-2 header-cart">
-                                    <a href="cart">
-                                        <i class="icon-basket-loaded"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+   
+    <div th:include="mynav.html"></div>
+
     <div class="product-details-area pt-120 pb-115">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-1"></div>
+                <div class="col-4">
                     <div class="product-details-tab">
                         <div class="pro-dec-big-img-slider">
                             <div class="easyzoom-style">
@@ -107,28 +59,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-1"></div>
                 <div class="col-lg-6 col-md-6">
-                    <div class="product-details-content pro-details-content-mrg">
                         <br>
-                        <h1><span th:text="${product.getName()}">Simple Black T-Shirt</span></h1>
-                        <br>
-                        <h3><span th:text="${product.getDescription()}">Seamlessly predominate enterprise metrics without performance
-                                    based process improvements.</span></h3>
-                        <div class="pro-details-price">
-                            <li>价格:<span class="new-price" th:text="${product.getPrice()}">￥75.72</span></li>
-                        </div>
-                        <div class="product-details-meta">
+                        <h1><span th:text="${product.getName()}"></span></h1>
+                        <h4 style="margin-top: 3%;">商品描述&nbsp;:&nbsp;&nbsp;&nbsp;<span th:text="${product.getDescription()}"></span></h4>
+                        <div style="margin-top: 5%;" class="product-details-meta" >
                             <ul>
-                                <li>商品类别:<span th:text="${product.getCategory()}"></span></li>
+                                <li style="font-size: large;">商品类别&nbsp;:&nbsp;&nbsp;&nbsp;<span style="font-size: 125%;" th:text="${product.getCategory()}"></span></li>
                             </ul>
                         </div>
-                        <!--                            <div class="pro-details-action-wrap">-->
-                        <!--                                <div class="pro-details-add-to-cart">-->
-                        <!--                                    <a title="Add to Cart" href="#">确认发布 </a>-->
-                        <!--                                </div>-->
-                        <!--                            </div>-->
-                        <button class="btn btn-success" id="id_user_login_submit" th:value="${product.getId()}"
-                                type="submit" data-toggle="modal" data-target="#myModal" ><a href="/shop">发布</a>
+                        <div  style="margin-top: 8%;"class="pro-details-price">
+                            <li style="font-size: 150%;">价格:&nbsp;&nbsp;&nbsp;&nbsp;<span class="new-price" style=" color :red;">￥</span><span  style=" color :red;" class="new-price" th:text="${product.getPrice()}"></span></li>
+                        </div>
+                        
+                    <div style="margin-top: 11%;" class="product-details-content pro-details-content-mrg">
+                        <button style="font-size: 150%;padding-left: 3%; padding-right: 3%" class="btn btn-success" id="id_user_login_submit" th:value="${product.getId()}"
+                                onclick="getseller(value)"><a style="color: white;" href="/shop">发布</a>
                         </button>
                     </div>
                 </div>

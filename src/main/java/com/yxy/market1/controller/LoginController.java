@@ -38,9 +38,9 @@ public class LoginController extends BaseController {
      */
     @PostMapping("/userlogin.f")
     public String fFrontUserLogin(HttpServletRequest request, Model model, UserLoginForm loginForm, BindingResult bindingResult, HttpServletResponse response) throws Exception {
-        System.out.println("this func is called");
-        System.out.println("username is " + loginForm.getUsername());
-        System.out.println("username is " + loginForm.getPassword());
+        // System.out.println("this func is called");
+        // System.out.println("username is " + loginForm.getUsername());
+        // System.out.println("username is " + loginForm.getPassword());
         if (bindingResult.hasErrors()) {
             List<ObjectError> errors = bindingResult.getAllErrors();
             addModelAtt(model, VIEW_MSG, errors.get(0).getDefaultMessage());
@@ -92,6 +92,7 @@ public class LoginController extends BaseController {
         }
         user.setUsername(registerForm.getUsername());
         user.setPassword(registerForm.getPassword());
+        user.setMoney(1000.0);
         mUserService.insertUser(user);
         //跳转登录
         addModelAtt(model, VIEW_LABEL, 1);

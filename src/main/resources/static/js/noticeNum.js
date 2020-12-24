@@ -22,7 +22,7 @@ function noticeNum(){
                 }
             },
             error: function (data) {
-                alert("getseller failed");
+                // alert("getseller failed");
             }
         });
         return false;

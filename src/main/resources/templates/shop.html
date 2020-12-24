@@ -137,9 +137,7 @@
                         <div class="shop-topbar-left">
                             <div class="view-mode nav">
                                 <a class="active" href="#shoppp-1" data-toggle="tab"><i class="icon-grid"></i></a>
-                                <a href="#shoppp-2" data-toggle="tab"><i class="icon-menu"></i></a>
                             </div>
-                            <p>Showing 1 - 20 of 30 results </p>
                         </div>
                         <div class="product-sorting-wrapper">
                             <!-- <div class="product-shorting shorting-style">
@@ -453,9 +451,9 @@
 <script>
 
     function add_to_cart(id){
-        alert(id);
+        // alert(id);
         var userId = document.getElementById("userId").value;
-        alert(userId);
+        // alert(userId);
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
@@ -471,14 +469,14 @@
             processData: false,
             success: function(res) {
                 if (res.code === 200) {
-                    alert("successfully added");
+                    alert("成功加入购物车!");
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);
                 }
             },
             error:function(data) {
-                alert("add to cart加载失败");
+                alert("add to cart加载失败!");
             }
         });
         return false;

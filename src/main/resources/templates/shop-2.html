@@ -485,15 +485,17 @@
     }
 
     window.onload = function() {
-        noticeNum();
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
         var serverPath = urlPath.substring(0, index);
+        var formData = new FormData();
+        formData.append("category", "生活用品");
         // alert(serverPath);
         $.ajax({
-            url:serverPath + "/display_goods",
+            url:serverPath + "/category_product",
             type:"post",
+            data:formData,
             contentType: false,
             processData: false,
             success: function(res) {
@@ -506,6 +508,7 @@
                             good_list: res.data
                         },
                     });
+                    scroll_to_goodlist();
                     alert(list[0].good_name);
                     // window.location.href="/product-details/" + res.data;
                 } else {
