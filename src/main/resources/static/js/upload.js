@@ -3,19 +3,18 @@ function uploadAndSubmit() {
     if (form["productPic"].files.length > 0) { // 寻找表单域中的 <input type="file" ... /> 标签
         alert("begin pro");
         var file = form["productPic"].files[0]; // try sending
-        alert(file.size);
 
-        alert("hello");
         //alert(file.content());
         var reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function () {
             this.result
-            alert("hello")
             var re = this.result;
             alert(file.name);    //'文件'file.name  '大小'file.size  '修改'file.lastModifiedDate
             document.getElementById("myImg").src = file.target.result;  //赋值img
         }
+
+
         reader.onloadstart = function() { // 这个事件在读取开始时触发
             // alert("onloadstart");
             document.getElementsByName("productPic").textContent = file.size;

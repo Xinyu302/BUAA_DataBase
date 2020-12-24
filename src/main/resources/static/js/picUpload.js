@@ -19,7 +19,7 @@ function upload() {
         success: function(res) {
             if (res.code == 200) {
                 alert(res.data);
-                window.location.href="/product-details/" + res.data;
+                window.location.href="/precheck/" + res.data;
             } else {
                 alert(res.msg);
             }

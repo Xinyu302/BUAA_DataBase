@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Norda - Minimal eCommerce HTML Template</title>
+    <title>Lumos-购物车</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,58 +42,8 @@
 <input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
 
 <div class="main-wrapper">
-    <header class="header-area sticky-bar bg-top section-padding-1">
-        <div class="container-fluid">
-            <div class="header-large-device">
-                <div class="header-bottom">
-                    <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="main-menu main-menu-padding-1 main-menu-lh-1">
-                                <nav>
-                                    <ul>
-                                        <li><a href="/index">主页</a></li>
-                                        <li><a href="/shop">购物</a></li>
-                                        <li><a href="/release">发布</a></li>
-                                        <li><a href="/my-account">个人信息</a></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                            <li>
-<!--                                                <div>-->
-                                                    <li style="font-size:200%" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                                    <li style="font-size:200%" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                                    <li th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
-<!--                                                </div>-->
-                                            </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="header-action header-action-flex header-action-mrg-right">
-                                <div class="same-style-2">
-                                    <a href="notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="userlogin"><i class="icon-user"></i></a>
-                                </div>
-                                <div class="same-style-2 header-cart">
-                                    <a href="cart">
-                                        <i class="icon-basket-loaded"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div th:include="mynav.html"></div>
+    
     <div class="cart-main-area pt-115 pb-120">
         <div class="container">
             <h3 class="cart-page-title">您的购物车</h3>
@@ -144,8 +94,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="subscribe-area bg-gray pt-115 pb-115">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5">
@@ -177,53 +125,18 @@
             </div>
         </div>
     </div>
-    <footer class="footer-area bg-gray pb-30">
+    <div class="subscribe-area bg-gray pt-40 pb-40">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <div class="contact-info-wrap">
-                        <div class="footer-logo">
-                            <a href="#"><img src="/images/logo/logo.png" alt="logo"></a>
-                        </div>
-                        <div class="single-contact-info">
-                            <span>Our Location</span>
-                            <p>869 General Village Apt. 645, Moorebury, USA</p>
-                        </div>
-                        <div class="single-contact-info">
-                            <span>24/7 hotline:</span>
-                            <p>(+99) 052 128 2399</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6">
-                    <div class="footer-right-wrap">
-                        <div class="footer-menu">
-                            <nav>
-                                <ul>
-                                    <li><a href="index.html">home</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="shop.html">Product </a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                    <li><a href="blog.html">Blog.</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="social-style-2 social-style-2-mrg">
-                            <a href="#"><i class="social_twitter"></i></a>
-                            <a href="#"><i class="social_facebook"></i></a>
-                            <a href="#"><i class="social_googleplus"></i></a>
-                            <a href="#"><i class="social_instagram"></i></a>
-                            <a href="#"><i class="social_youtube"></i></a>
-                        </div>
-                        <div class="copyright">
-                            <p>Copyright © 2020 HasThemes | <a href="http://www.bootstrapmb.com/">Built with
-                                <span>Norda</span> by HasThemes</a>.</p>
-                        </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="section-title">
+                        <h2 style="text-align: center"><a href="/admini">管理商城</a></h2>
+                        <p style="text-align: center"><a href="/contact">联系我们</a></p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 </div>
 
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Norda - Minimal eCommerce HTML Template</title>
+    <title>Lumos-个人信息</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,58 +40,7 @@
     <input th:if="${session.session_current_user}" type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
     
 <div class="main-wrapper">
-    <header class="header-area sticky-bar bg-top section-padding-1">
-        <div class="container-fluid">
-            <div class="header-large-device">
-                <div class="header-bottom">
-                    <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="main-menu main-menu-padding-1 main-menu-lh-1">
-                                <nav>
-                                    <ul>
-                                        <li><a href="/index">主页</a></li>
-                                        <li><a href="/shop">购物</a></li>
-                                        <li><a href="/release">发布</a></li>
-                                        <li><a href="/my-account">个人信息</a></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                            <li>
-<!--                                                <div>-->
-                                                    <li style="font-size:200%" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                                    <li style="font-size:200%" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                                    <li th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
-<!--                                                </div>-->
-                                            </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="header-action header-action-flex header-action-mrg-right">
-                                <div class="same-style-2">
-                                    <a href="notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="userlogin"><i class="icon-user"></i></a>
-                                </div>
-                                <div class="same-style-2 header-cart">
-                                    <a href="cart">
-                                        <i class="icon-basket-loaded"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div th:include="mynav.html"></div>
 
     <div class="my-account-wrapper pt-120 pb-120">
         <div class="container">

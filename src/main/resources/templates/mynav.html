@@ -1,57 +1,53 @@
-<html>
-    <body>
-        <header class="header-area sticky-bar bg-top section-padding-1" th:fragment="pagination">
-            <div class="container-fluid">
-                <div class="header-large-device">
-                    <div class="header-bottom">
-                        <div class="row align-items-center">
-                            <div class="col-2">
-                                <div class="logo">
-                                    <a href="/index"><img src="/images/logo/logo.png" alt="logo"></a>
-                                </div>
+<header class="header-area sticky-bar bg-top section-padding-1">
+    <div class="container-fluid">
+        <div class="header-large-device">
+            <div class="header-bottom">
+                <div class="row align-items-center">
+                    <div class="col-2">
+                        <div class="logo">
+                            <a href="/index"><img src="/images/logo/logo.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                            <nav>
+                                <ul>
+                                    <li><a href="/index">主页</a></li>
+                                    <li><a href="/shop">购物</a></li>
+                                    <li><a href="/release">发布</a></li>
+                                    <li><a href="/my-account">个人信息</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <!-- <div class="main-menu main-menu-padding-1 main-menu-lh-1 " style="float: right"> -->
+                            <nav style="overflow: hidden; float: right; padding-top: 6px;">
+                                <ul>
+                                    <li style="font-size:150%;" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
+                                    <li style="font-size:150%;" th:unless="${session.session_current_user}">您好，您尚未登录</li>
+                                    <li th:if="${session.session_current_user}" style="padding-top: 5px; float: right;">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
+                                </ul>
+                            </nav>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-2">
+                        <div class="header-action header-action-flex header-action-mrg-right">
+                            <div class="same-style-2">
+                                <a href="/notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
                             </div>
-                            <div class="col-4">
-                                <div class="main-menu main-menu-padding-1 main-menu-lh-1">
-                                    <nav>
-                                        <ul>
-                                            <li><a href="/index">主页</a></li>
-                                            <li><a href="/shop">购物</a></li>
-                                            <li><a href="/release">发布</a></li>
-                                            <li><a href="/my-account">个人信息</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                            <div class="same-style-2">
+                                <a href="/userlogin"><i class="icon-user"></i></a>
                             </div>
-                            <div class="col-4">
-                                <!-- <div class="main-menu main-menu-padding-1 main-menu-lh-1 " style="float: right"> -->
-                                    <nav style="overflow: hidden; float: right; padding-top: 6px;">
-                                        <ul>
-                                            <li style="font-size:175%;" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                            <li style="font-size:175%;" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                            <li th:if="${session.session_current_user}" style="padding-top: 5px; float: right;">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
-                                        </ul>
-                                    </nav>
-                                <!-- </div> -->
-                            </div>
-                            <div class="col-2">
-                                <div class="header-action header-action-flex header-action-mrg-right">
-                                    <div class="same-style-2">
-                                        <a href="/notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
-                                    </div>
-                                    <div class="same-style-2">
-                                        <a href="/userlogin"><i class="icon-user"></i></a>
-                                    </div>
-                                    <div class="same-style-2 header-cart">
-                                        <a href="/cart">
-                                            <i class="icon-basket-loaded"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="same-style-2 header-cart">
+                                <a href="/cart">
+                                    <i class="icon-basket-loaded"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
-    </body>
-</html>
+        </div>
+    </div>
+</header>

@@ -111,5 +111,10 @@ public class FrontController extends BaseController {
     public String getContact(HttpServletRequest request) {
         return "contact";
     }
+
+    @GetMapping("/precheck")
+    public String getpreCheck(HttpServletRequest request) {
+        return "precheck";
+    }
 }
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Norda - Minimal eCommerce HTML Template</title>
+    <title>Lumos-商品</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,58 +42,7 @@
 
 <div class="main-wrapper box-layout-width-2">
 
-    <header class="header-area sticky-bar bg-top section-padding-1">
-        <div class="container-fluid">
-            <div class="header-large-device">
-                <div class="header-bottom">
-                    <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="logo">
-                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
-                            </div>
-                        </div>
-                        <div class="col-xl-8 col-lg-8">
-                            <div class="main-menu main-menu-padding-1 main-menu-lh-1">
-                                <nav>
-                                    <ul>
-                                        <li><a href="/index">主页</a></li>
-                                        <li><a href="/shop">购物</a></li>
-                                        <li><a href="/release">发布</a></li>
-                                        <li><a href="/my-account">个人信息</a></li>
-                                        <li></li>
-                                        <li></li>
-                                        <li></li>
-                                            <li>
-<!--                                                <div>-->
-                                                    <li style="font-size:200%" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
-                                                    <li style="font-size:200%" th:unless="${session.session_current_user}">您好，您尚未登录</li>
-                                                    <li th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
-<!--                                                </div>-->
-                                            </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-2">
-                            <div class="header-action header-action-flex header-action-mrg-right">
-                                <div class="same-style-2">
-                                    <a href="notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
-                                </div>
-                                <div class="same-style-2">
-                                    <a href="userlogin"><i class="icon-user"></i></a>
-                                </div>
-                                <div class="same-style-2 header-cart">
-                                    <a href="cart">
-                                        <i class="icon-basket-loaded"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div th:include="mynav.html"></div>
 
     <header class="header-area">
         <div class="header-large-device">
@@ -163,18 +112,11 @@
                 <div class="col-xl-9 col-lg-8 ml-auto">
                     <div class="hero-slider-active-1 nav-style-1 nav-style-1-modify nav-style-1-green-2 dot-style-2 dot-style-2-position-5 dot-style-2-active-green-2 bg-gray-7">
                         <div class="single-hero-slider slider-height-4 custom-d-flex custom-align-item-center single-animation-wrap bg-img res-white-overly-xs"
-                             style="background-image:url(assets/images/slider/hm-8-slider-1.jpg);">
+                             style="background-image:url(/images/shop/ch.jpg);">
                             <div class="row no-gutters align-items-center slider-animated-1">
                                 <div class="col-12">
                                     <div class="hero-slider-content-6">
-                                        <h5 class="animated">New Arrivals</h5>
-                                        <h1 class="animated">Native Fuel <br>Whey</h1>
-                                        <p class="animated">Discover our collection with leather simple backpacks. Less
-                                            is more never out trend.</p>
-                                        <div class="btn-style-1">
-                                            <a class="animated btn-1-padding-4 btn-1-green-2 btn-1-font-14"
-                                               href="product-details.html">Explore Now</a>
-                                        </div>
+                                        <h1 class="animated" style="color: rgb(253, 253, 121);">选购您心仪的商品！</h1>
                                     </div>
                                 </div>
                             </div>
@@ -184,6 +126,9 @@
             </div>
         </div>
     </div>
+
+
+
     <div id="Good_Area" class="shop-area pt-120 pb-120">
         <div class="container">
             <div class="row flex-row-reverse">
@@ -191,33 +136,33 @@
                     <div class="shop-topbar-wrapper">
                         <div class="shop-topbar-left">
                             <div class="view-mode nav">
-                                <a class="active" href="#shop-1" data-toggle="tab"><i class="icon-grid"></i></a>
-                                <a href="#shop-2" data-toggle="tab"><i class="icon-menu"></i></a>
+                                <a class="active" href="#shoppp-1" data-toggle="tab"><i class="icon-grid"></i></a>
+                                <a href="#shoppp-2" data-toggle="tab"><i class="icon-menu"></i></a>
                             </div>
                             <p>Showing 1 - 20 of 30 results </p>
                         </div>
                         <div class="product-sorting-wrapper">
-                            <div class="product-shorting shorting-style">
+                            <!-- <div class="product-shorting shorting-style">
                                 <label>View :</label>
                                 <select>
                                     <option value=""> 20</option>
                                     <option value=""> 23</option>
                                     <option value=""> 30</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="product-show shorting-style">
-                                <label>Sort by :</label>
+                                <label>排序方式 :</label>
                                 <select>
-                                    <option value="">Default</option>
-                                    <option value=""> Name</option>
-                                    <option value=""> price</option>
+                                    <option value="">默认</option>
+                                    <option value=""> 名称</option>
+                                    <option value=""> 价格</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="shop-bottom-area">
                         <div class="tab-content jump">
-                            <div id="shop-1" class="tab-pane active">
+                            <div id="shoppp-1" class="tab-pane active">
                                 <div class="row" id="vue_goods_display">
                                     <!--                                    <div>-->
 
@@ -253,7 +198,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="shop-2" class="tab-pane">
+                            <!-- <div id="shop-2" class="tab-pane">
                                 <div class="shop-list-wrap mb-30">
                                     <div class="row">
                                         <div class="col-xl-4 col-lg-5 col-md-6 col-sm-6">
@@ -469,21 +414,22 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
-                        <div class="pro-pagination-style text-center mt-10">
+                        <!-- <div class="pro-pagination-style text-center mt-10">
                             <ul>
                                 <li><a class="prev" href="#"><i class="icon-arrow-left"></i></a></li>
                                 <li><a class="active" href="#">1</a></li>
                                 <li><a href="#">2</a></li>
                                 <li><a class="next" href="#"><i class="icon-arrow-right"></i></a></li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="subscribe-area bg-gray pt-40 pb-40">
         <div class="container">
             <div class="row">
@@ -497,139 +443,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">x</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-5 col-md-6 col-12 col-sm-12">
-                            <div class="tab-content quickview-big-img">
-                                <div id="pro-1" class="tab-pane fade show active">
-                                    <img src="/images/product/product-1.jpg" alt="">
-                                </div>
-                                <div id="pro-2" class="tab-pane fade">
-                                    <img src="/images/product/product-3.jpg" alt="">
-                                </div>
-                                <div id="pro-3" class="tab-pane fade">
-                                    <img src="/images/product/product-6.jpg" alt="">
-                                </div>
-                                <div id="pro-4" class="tab-pane fade">
-                                    <img src="/images/product/product-3.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="quickview-wrap mt-15">
-                                <div class="quickview-slide-active nav-style-6">
-                                    <a class="active" data-toggle="tab" href="#pro-1"><img
-                                            src="/images/product/quickview-s1.jpg" alt=""></a>
-                                    <a data-toggle="tab" href="#pro-2"><img src="/images/product/quickview-s2.jpg"
-                                                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-3"><img src="/images/product/quickview-s3.jpg"
-                                                                            alt=""></a>
-                                    <a data-toggle="tab" href="#pro-4"><img src="/images/product/quickview-s2.jpg"
-                                                                            alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6 col-12 col-sm-12">
-                            <div class="product-details-content quickview-content">
-                                <h2>Simple Black T-Shirt</h2>
-                                <div class="product-ratting-review-wrap">
-                                    <div class="product-ratting-digit-wrap">
-                                        <div class="product-ratting">
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                        </div>
-                                        <div class="product-digit">
-                                            <span>5.0</span>
-                                        </div>
-                                    </div>
-                                    <div class="product-review-order">
-                                        <span>62 Reviews</span>
-                                        <span>242 orders</span>
-                                    </div>
-                                </div>
-                                <p>Seamlessly predominate enterprise metrics without performance based process
-                                    improvements.</p>
-                                <div class="pro-details-price">
-                                    <span class="new-price">$75.72</span>
-                                    <span class="old-price">$95.72</span>
-                                </div>
-                                <div class="pro-details-color-wrap">
-                                    <span>Color:</span>
-                                    <div class="pro-details-color-content">
-                                        <ul>
-                                            <li><a class="dolly" href="#">dolly</a></li>
-                                            <li><a class="white" href="#">white</a></li>
-                                            <li><a class="azalea" href="#">azalea</a></li>
-                                            <li><a class="peach-orange" href="#">Orange</a></li>
-                                            <li><a class="mona-lisa active" href="#">lisa</a></li>
-                                            <li><a class="cupid" href="#">cupid</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="pro-details-size">
-                                    <span>Size:</span>
-                                    <div class="pro-details-size-content">
-                                        <ul>
-                                            <li><a href="#">XS</a></li>
-                                            <li><a href="#">S</a></li>
-                                            <li><a href="#">M</a></li>
-                                            <li><a href="#">L</a></li>
-                                            <li><a href="#">XL</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="pro-details-quality">
-                                    <span>Quantity:</span>
-                                    <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
-                                    </div>
-                                </div>
-                                <div class="product-details-meta">
-                                    <ul>
-                                        <li><span>Categories:</span> <a href="#">Woman,</a> <a href="#">Dress,</a> <a
-                                                href="#">T-Shirt</a></li>
-                                        <li><span>Tag: </span> <a href="#">Fashion,</a> <a href="#">Mentone</a> , <a
-                                                href="#">Texas</a></li>
-                                    </ul>
-                                </div>
-                                <div class="pro-details-action-wrap">
-                                    <div class="pro-details-add-to-cart">
-                                        <a title="Add to Cart" href="#">Add To Cart </a>
-                                    </div>
-                                    <div class="pro-details-action">
-                                        <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
-                                        <a title="Add to Compare" href="#"><i class="icon-refresh"></i></a>
-                                        <a class="social" title="Social" href="#"><i class="icon-share"></i></a>
-                                        <div class="product-dec-social">
-                                            <a class="facebook" title="Facebook" href="#"><i
-                                                    class="icon-social-facebook"></i></a>
-                                            <a class="twitter" title="Twitter" href="#"><i
-                                                    class="icon-social-twitter"></i></a>
-                                            <a class="instagram" title="Instagram" href="#"><i
-                                                    class="icon-social-instagram"></i></a>
-                                            <a class="pinterest" title="Pinterest" href="#"><i
-                                                    class="icon-social-pinterest"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Modal end -->
 </div>
-<input type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}" >
 <!-- All JS is here
 ============================================ -->
 
@@ -656,6 +471,7 @@
             processData: false,
             success: function(res) {
                 if (res.code === 200) {
+                    alert("successfully added");
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);
@@ -669,7 +485,7 @@
     }
 
     window.onload = function() {
-        noticeNum();
+        // noticeNum();
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);

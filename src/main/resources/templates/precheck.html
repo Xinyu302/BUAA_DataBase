@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Lumos-商品详情</title>
+    <title>Lumos-发布确认</title>
     <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,14 +36,64 @@
 <body>
     <input th:if="${session.session_current_user}" type="hidden" id="userId" th:value="${session.session_current_user.getUserId()}">
 
-<div class="main-wrapper">
-    <div th:include="mynav.html"></div>
 
+<div class="main-wrapper">
+    <header class="header-area sticky-bar bg-top section-padding-1">
+        <div class="container-fluid">
+            <div class="header-large-device">
+                <div class="header-bottom">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="index"><img src="images/logo/logo.png" alt="logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-8">
+                            <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                                <nav>
+                                    <ul>
+                                        <li><a href="/index">主页</a></li>
+                                        <li><a href="/shop">购物</a></li>
+                                        <li><a href="/release">发布</a></li>
+                                        <li><a href="/my-account">个人信息</a></li>
+                                        <li></li>
+                                        <li></li>
+                                        <li></li>
+                                            <li>
+<!--                                                <div>-->
+                                                    <li style="font-size:200%" th:if="${session.session_current_user}">您好，<span th:text="${session.session_current_user.getUsername()}"></span></li>
+                                                    <li style="font-size:200%" th:unless="${session.session_current_user}">您好，您尚未登录</li>
+                                                    <li th:if="${session.session_current_user}">账户余额：<span th:text="${session.session_current_user.getMoneyString()}"></span></li>
+<!--                                                </div>-->
+                                            </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="header-action header-action-flex header-action-mrg-right">
+                                <div class="same-style-2">
+                                    <a href="notice"><i class="icon-envelope"></i><span class="pro-count red" id="noticenum"></span></a>
+                                </div>
+                                <div class="same-style-2">
+                                    <a href="userlogin"><i class="icon-user"></i></a>
+                                </div>
+                                <div class="same-style-2 header-cart">
+                                    <a href="cart">
+                                        <i class="icon-basket-loaded"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="product-details-area pt-120 pb-115">
         <div class="container">
             <div class="row">
-                <div class="col-1"></div>
-                <div class="col-4">
+                <div class="col-lg-6 col-md-6">
                     <div class="product-details-tab">
                         <div class="pro-dec-big-img-slider">
                             <div class="easyzoom-style">
@@ -57,83 +107,41 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-1"></div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product-details-content pro-details-content-mrg">
                         <br>
                         <h1><span th:text="${product.getName()}">Simple Black T-Shirt</span></h1>
-                        <h4 style="margin-top: 3%;"><span th:text="${product.getDescription()}"></span></h4>
-                        <div style="margin-top: 5%;" class="product-details-meta" >
-                            <ul>
-                                <li style="font-size: large;">商品类别:&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 125%;" th:text="${product.getCategory()}"></span></li>
-                            </ul>
+                        <br>
+                        <h3><span th:text="${product.getDescription()}">Seamlessly predominate enterprise metrics without performance
+                                    based process improvements.</span></h3>
+                        <div class="pro-details-price">
+                            <li>价格:<span class="new-price" th:text="${product.getPrice()}">￥75.72</span></li>
                         </div>
-                        <div  style="margin-top: 8%;"class="pro-details-price">
-                            <li style="font-size: 150%;">价格:&nbsp;&nbsp;&nbsp;&nbsp;<span class="new-price">￥</span><span class="new-price" th:text="${product.getPrice()}"></span></li>
+                        <div class="product-details-meta">
+                            <ul>
+                                <li>商品类别:<span th:text="${product.getCategory()}"></span></li>
+                            </ul>
                         </div>
                         <!--                            <div class="pro-details-action-wrap">-->
                         <!--                                <div class="pro-details-add-to-cart">-->
                         <!--                                    <a title="Add to Cart" href="#">确认发布 </a>-->
                         <!--                                </div>-->
                         <!--                            </div>-->
-                        
-                        <div style="margin-top: 11%;"><button class="btn btn-success" id="id_user_login_submit" th:value="${product.getId()}" style="font-size: 150%;padding-left: 3%; padding-right: 3%"
-                                type="submit" data-toggle="modal" data-target="#myModal" onclick="getseller(value)">购买
-                        </button></div>
+                        <button class="btn btn-success" id="id_user_login_submit" th:value="${product.getId()}"
+                                type="submit" data-toggle="modal" data-target="#myModal" ><a href="/shop">发布</a>
+                        </button>
                     </div>
                 </div>
 
                 <div class="get-in-touch-wrap col-lg-12">
 
                     <br><br><br>
-                    <div class="contact-from contact-shadow">
-                        <form id="commentForm">
-                            <div class="row">
-                                <div class="col-lg-12 col-md-12">
-                                    <input type="text" name="content" placeholder="请输入评论内容......">
-                                </div>
-                                <div class="col-lg-12 col-md-12">
-                                    <button class="submit" type="commentsubmit" onclick="commentupload()">发送评论</button>
-                                </div>
-                            </div>
                         </form>
                         <p class="form-messege"></p>
                     </div>
                 </div>
             </div>
 
-        </div>
-        <div class="cart-main-area pt-115 pb-120">
-            <div class="container">
-                <h3 class="cart-page-title">评论</h3>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
-                        <form action="#">
-                            <div class="table-content table-responsive cart-table-content">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>评论人</th>
-                                        <th>内容</th>
-                                        <th>时间</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="vue_comment_display">
-                                    <tr v-for="comment_ele in comment_list">
-                                        <td class="product-thumbnail"><a href="#">{{ comment_ele.username }}</a></td>
-                                        <td class="product-price-cart"><span>{{ comment_ele.content }}</span></td>
-                                        <td class="product-price-cart">
-                                            <a :id="'comment-id-'+comment_ele.id"
-                                            ><span>{{ comment_ele.date }}</span></a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     
@@ -149,33 +157,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <!--                <h4 class="modal-title" id="myModalLabel">-->
-                <!--                    是否要添加到购物车-->
-                <!--                </h4>-->
-            </div>
-            <div class="text-center">
-                <div class="modal-body"><p>商家联系方式:<span id="sellerphone"></span></p>
-                    <p>商家地址:<span id="selleraddress"></span></p></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">否
-                    </button>
-                    <button type="button" th:value="${product.getId()}" class="btn btn-primary" onclick="buy(value)">
-                        是
-                    </button>
-                </div>
-            </div>
-
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
 </div>
 <!-- All JS is here
 ============================================ -->
@@ -207,7 +188,7 @@
 <script>
     // var sellerInfo;
     function buy(product_id) {
-        // alert("fuck buy");
+        alert("fuck buy");
         var userId = document.getElementById("userId").value;
         alert(product_id);
         // var fuck_idx = id.indexOf("-");
@@ -227,7 +208,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    // alert("successfully buy");
+                    alert("successfully buy");
                     location.reload();
                     // window.location.href="/product-details/" + res.data;
                 } else {
@@ -242,7 +223,7 @@
     }
 
     function getseller(product_id) {
-        // alert("fuck getseller");
+        alert("fuck getseller");
         // var userId = document.getElementById("userId").value;
         alert(product_id);
         // var fuck_idx = id.indexOf("-");
@@ -262,7 +243,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    // alert("successfully getseller");
+                    alert("successfully getseller");
                     // sellerInfo = res.data;
                     document.getElementById("sellerphone").innerHTML = res.data.phone
                     document.getElementById("selleraddress").innerHTML = res.data.address
@@ -296,10 +277,10 @@
         } else {
             productId = urlPath.substring(index_productid + 1, index_proid_end);
         }
-        // alert(productId);
+        alert(productId);
         var form = document.getElementById('commentForm'),
             formData = new FormData(form);
-        // alert(formData);
+        alert(formData);
         formData.append("userId", Number(userId));
         formData.append("productId", Number(productId));
         $.ajax({
@@ -395,9 +376,7 @@
     // }
 
     window.onload = function () {
-        // alert("fuck");
-        // noticeNum();
-        // alert("fuck2");
+        noticeNum();
         // var userId = document.getElementById("userId").value;
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
@@ -412,7 +391,7 @@
         }
         var serverPath = urlPath.substring(0, index);
         var formData = new FormData();
-        // alert(productId);
+        alert(productId);
         formData.append("productid", Number(productId));
         // alert(Number(userId));
         // alert(serverPath);
@@ -424,7 +403,7 @@
             processData: false,
             success: function (res) {
                 if (res.code === 200) {
-                    // alert("nb");
+                    alert("nb");
                     // alert(res.data);
                     var vm = new Vue({
                         el: '#vue_comment_display',
@@ -432,9 +411,9 @@
                             comment_list: res.data
                         },
                     });
-                    // alert("fuck");
-                    // alert(res.data[0].username);
-                    // alert(comment_list[0].username);
+                    alert("fuck");
+                    alert(res.data[0].username);
+                    alert(comment_list[0].username);
                     // window.location.href="/product-details/" + res.data;
                 } else {
                     alert(res.msg);
@@ -447,7 +426,7 @@
         return false;
     }
 </script>
-<script src="/js/main.js"></script>
+<!--<script src="/js/main.js"></script>-->
 
 </body>
 

@@ -102,6 +102,15 @@ public class ProductController extends BaseController {
         return "product-details";
     }
 
+
+    // TODO
+    @GetMapping("/precheck/{id}")
+    public String productCheck(HttpServletRequest request, Model model, @PathVariable Integer id) throws Exception {
+        Product product = productService.findProductById(id);
+        addModelAtt(model, "product", product);
+        return "precheck";
+    }
+
     @GetMapping("/shop/{id}")
     public String shopToGo(HttpServletRequest request,@PathVariable Integer id) {
         return "shop-"+id;
