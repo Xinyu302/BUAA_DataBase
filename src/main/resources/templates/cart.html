@@ -231,6 +231,8 @@
 ============================================ -->
 
 
+<script src="js/noticeNum.js"></script>
+
 <script>
     function delete_one_cart(id) {
         var userId = document.getElementById("userId").value;
@@ -299,6 +301,7 @@
 
     // var list = [{good_name : 'hello', price : 10}];
     window.onload = function () {
+        noticeNum();
         var userId = document.getElementById("userId").value;
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;

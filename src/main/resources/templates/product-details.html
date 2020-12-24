@@ -251,6 +251,9 @@
 <script src="/js/vendor/vendor.min.js"></script>
 <script src="/js/plugins/plugins.min.js"></script>  -->
 <!-- Main JS -->
+
+<script src="js/noticeNum.js"></script>
+
 <script>
     // var sellerInfo;
     function buy(product_id) {
@@ -442,6 +445,7 @@
     // }
 
     window.onload = function () {
+        noticeNum();
         // var userId = document.getElementById("userId").value;
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;

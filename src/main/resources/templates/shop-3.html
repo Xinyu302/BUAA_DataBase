@@ -635,6 +635,8 @@
 <!-- All JS is here
 ============================================ -->
 
+<script src="js/noticeNum.js"></script>
+
 <script>
 
     function add_to_cart(id){
@@ -670,6 +672,7 @@
     }
 
     window.onload = function() {
+        noticeNum();
         var urlPath = window.document.location.href;
         var docPath = window.document.location.pathname;
         var index = urlPath.indexOf(docPath);
