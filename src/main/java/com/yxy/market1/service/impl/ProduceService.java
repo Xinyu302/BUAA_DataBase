@@ -4,6 +4,7 @@ import com.yxy.market1.entity.Product;
 import com.yxy.market1.mapper.ProductMapper;
 import com.yxy.market1.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -44,6 +45,7 @@ public class ProduceService implements IProductService {
 
     @Override
     public List<Product> findAllProduct() {
+//        Sort sort = new Sort(Sort.Direction.DESC, "id");
         return pMapper.findAll();
     }
 

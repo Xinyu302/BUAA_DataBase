@@ -5,6 +5,12 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "orders")
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "in_only_test", procedureName = "test_pkg.in_only_test", parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "inParam1", type = String.class) }),
+        @NamedStoredProcedureQuery(name = "in_and_out_test", procedureName = "test_pkg.in_and_out_test", parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "inParam1", type = String.class),
+                @StoredProcedureParameter(mode = ParameterMode.OUT, name = "outParam1", type = String.class) }) })
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -87,7 +88,7 @@ public class ProductController extends BaseController {
 
         product.setStatus("已发布");
         product = productService.createProduct(product);
-        String content = "发布了商品";
+        String content = "发布了商品"+product.getName();
         Notice notice = new Notice(Integer.valueOf(productForm.getSellerId()), date, content,"未读");
         noticeService.addNotice(notice);
 //        System.out.println(product.getId());
@@ -140,6 +141,12 @@ public class ProductController extends BaseController {
     }
 
     private Result<List<ProductResponse>> getListResult(List<Product> productList) {
+        productList.sort(new Comparator<Product>() {
+            @Override
+            public int compare(Product o1, Product o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
         List<ProductResponse> productResponses = new ArrayList<>();
         for (Product p : productList) {
             if (p.getStatus().equals("已发布")) {
